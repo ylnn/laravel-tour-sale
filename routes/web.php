@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::group(['prefix' => 'admin'], function () { /* Middleware: admin eklenecek */
+
+    Route::get('index', 'Admin\AdminController@index');
+
+});
