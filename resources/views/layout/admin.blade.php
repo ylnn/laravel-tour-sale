@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Tour Sale System</title>
+    <title>TourSale</title>
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" >
     <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans" rel="stylesheet">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -14,7 +14,7 @@
 </head>
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Tour.Sale.System</a>
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('admin.dashboard') }}">TourSale</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="#">Çıkış yap</a>
@@ -41,33 +41,39 @@
                     </h6>
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Current month
-                </a>
+                            <a class="nav-link" href="{{ route('admin.category.index') }}">
+                                <span data-feather="file-text"></span>
+                                Kategoriler
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Last quarter
-                </a>
+                                <span data-feather="file-text"></span>
+                                Turlar
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Social engagement
-                </a>
+                                <span data-feather="file-text"></span>
+                                Tur Tarihleri
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Year-end sale
-                </a>
+                                <span data-feather="file-text"></span>
+                                Rezervasyonlar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span>
+                                Ödemeler
+                            </a>
                         </li>
                     </ul>
                 </div>
             </nav>
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <main role="main" class="main col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
                     @yield('content') 
                 
@@ -85,6 +91,14 @@
     <script src="{{asset('js/jquery-3.3.1.slim.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('js/holder.min.js')}}"></script>
-    <script src="{{asset('js/lightslider.min.js')}}"></script>
     <script src="{{asset('css/summernote/summernote-bs4.js')}}"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 300
+            });
+        });
+    </script>
 </html>
