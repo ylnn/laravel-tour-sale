@@ -1,24 +1,13 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Middleware: admin eklenecek */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('index', 'AdminController@index')->name('admin.dashboard');
 
-
-
-Route::group(['prefix' => 'admin'], function () { /* Middleware: admin eklenecek */
-
-    Route::get('index', 'Admin\AdminController@index');
+    Route::group(['prefix' => 'category'], function(){
+        Route::get('index', 'CategoryController@index')->name('admin.category.index');
+        Route::get('create', 'CategoryController@create')->name('admin.category.create');
+        Route::get('edit/{category}', 'CategoryController@edit')->name('admin.category.edit');
+    });
 
 });
