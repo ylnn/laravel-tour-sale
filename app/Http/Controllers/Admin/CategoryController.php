@@ -46,14 +46,14 @@ class CategoryController extends Controller
             'status' => 'boolean|required',
             'name' => 'string|required|unique:categories,name',
             'slug' => 'string|nullable',
-            'description' => 'text|nullable',
+            'description' => 'string|nullable',
         ]);
 
         $record = new Category();
         $record->name = $request->name;
         $record->status = $request->status;
         $record->description = $request->description;
-        $record->setSlug($record->slug);
+        $record->setSlug($request->slug);
         $record->save();
 
         showMessage('Kaydedildi', 'success');
@@ -76,21 +76,30 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'status' => 'boolean|required',
-            'name' => 'string|required|unique:categories,name',
+            'name' => 'string|required',
             'slug' => 'string|nullable',
-            'description' => 'text|nullable',
+            'description' => 'string|nullable',
         ]);
 
-        $record = $category;
-        $record->name = $request->name;
-        $record->status = $request->status;
-        $record->description = $request->description;
-        $record->setSlug($record->slug);
-        $record->save();
+        $category->name = $request->name;
+        $category->status = $request->status;
+        $category->description = $request->description;
+        $category->setSlug($request->slug);
+        $category->save();
 
         showMessage('Kaydedildi', 'success');
 
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
+    }
+    
+    public function destroy(Request $request, Category $category)
+    {
+        if($category->delete()){
+            showMessage('Silindi', 'success');
+        }
+
+        // return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
+        return back();
     }
 
 
@@ -114,6 +123,12 @@ class CategoryController extends Controller
                 break;
             case 31:
                 $query->orderBy('updated_at', 'asc');
+                break;
+            case 40:
+                $query->orderBy('status', 'desc');
+                break;
+            case 41:
+                $query->orderBy('status', 'asc');
                 break;
 
             default: // Default Order
