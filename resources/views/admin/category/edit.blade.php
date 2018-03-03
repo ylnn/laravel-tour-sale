@@ -27,6 +27,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Kaydet</button>
                 <a href="{{ url()->previous() }}" class="btn btn-secondary">İptal</a>
+
                 <input type="hidden" name="previous" value="{{ url()->previous() }}">
             </form>
 
