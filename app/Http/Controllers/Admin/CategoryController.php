@@ -16,6 +16,7 @@ class CategoryController extends Controller
 
     public function index()
     {
+
         $q = request('q');
         $p = request('p');
         $o = request('o');
@@ -59,19 +60,43 @@ class CategoryController extends Controller
 
         showMessage('Kaydedildi', 'success');
 
-        return redirect()->route($this->indexRoute);
+        return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
     }
 
     public function show(Category $category)
     {
-
        return view('admin.category.show', compact('category'));
     }
 
-    public function edit()
+    public function edit(Category $category)
     {
-        return view('admin.category.edit');   
+        $baseRoute = $this->baseRoute;
+        return view('admin.category.edit', compact('category','baseRoute'));   
     }
+
+    public function update(Request $request, Category $category)
+    {
+
+        $this->validate($request, [
+            'status' => 'boolean|required',
+            'name' => 'string|required|unique:categories,name',
+            'slug' => 'string|nullable',
+            'description' => 'text|nullable',
+        ]);
+
+        $record = $category; 
+        $record->name = $request->name;
+        $record->status = $request->status;
+        $record->description = $request->description;
+        $record->setSlug($record->slug);
+        $record->save();
+
+        showMessage('Kaydedildi', 'success');
+
+        return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
+
+    }
+
 
     protected function getOrderConstrait($query, $o)
     {
