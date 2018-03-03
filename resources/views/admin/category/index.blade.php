@@ -39,6 +39,7 @@
           <thead>
             <tr>
               <th>#</th>
+              <th><a href="?q={{$q}}&o=<?php echo $o == 40 ? "41" : "40";?>">Durum </a></th>
               <th><a href="?q={{$q}}&o=<?php echo $o == 10 ? "11" : "10";?>">İsim </a></th>
               <th><a href="?q={{$q}}&o=<?php echo $o == 20 ? "21" : "20";?>">Ekleme</a></th>
               <th><a href="?q={{$q}}&o=<?php echo $o == 30 ? "31" : "30";?>">Güncelleme </a></th>
@@ -50,13 +51,14 @@
               @foreach ($records as $record)
                 <tr>
                   <td>{{$record->id}}</td>
+                  <td>@if($record->status) Yayında @else Yayında değil @endif</td>
                   <td>{{$record->name}}</td>
                   <td>{{$record->created_at->format('d.m.y')}}</td>
                   <td>{{$record->updated_at->format('d.m.y')}}</td>
                   <td>
                     <a href="{{ route($baseRoute . '.show', ['category' => $record->id]) }} " class="btn btn-primary btn-sm">Göster</a>
                     <a href="{{ route($baseRoute . '.edit', ['category' => $record->id]) }} " class="btn btn-warning btn-sm">Düzenle</a>
-                    <a href="#" class="btn btn-danger btn-sm">Sil</a>
+                    <a href="{{ route($baseRoute . '.delete', ['category' => $record->id]) }} " class="btn btn-danger btn-sm">Sil</a>
                   </td>
                 </tr>
               @endforeach
