@@ -55,7 +55,7 @@
                   <td>{{$record->updated_at->format('d.m.y')}}</td>
                   <td>
                     <a href="{{ route($baseRoute . '.show', ['category' => $record->id]) }} " class="btn btn-primary btn-sm">Göster</a>
-                    <a href="#" class="btn btn-warning btn-sm">Düzenle</a>
+                    <a href="{{ route($baseRoute . '.edit', ['category' => $record->id]) }} " class="btn btn-warning btn-sm">Düzenle</a>
                     <a href="#" class="btn btn-danger btn-sm">Sil</a>
                   </td>
                 </tr>
