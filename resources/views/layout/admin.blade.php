@@ -75,6 +75,13 @@
             </nav>
             <main role="main" class="main col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
+                    <div class="row">
+                        <div class="col-6">
+                            @include('admin.inc.error')
+                            @include('admin.inc.flash')
+                        </div>
+                    </div>
+
                     @yield('content') 
                 
             </main>
