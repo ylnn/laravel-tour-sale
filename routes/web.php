@@ -10,6 +10,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Mid
         Route::post('store', 'CategoryController@store')->name('admin.category.store');
         Route::get('show/{category}', 'CategoryController@show')->name('admin.category.show');
         Route::get('edit/{category}', 'CategoryController@edit')->name('admin.category.edit');
+        Route::post('update/{category}', 'CategoryController@update')->name('admin.category.update');
     });
 
 });
