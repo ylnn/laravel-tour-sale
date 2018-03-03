@@ -8,7 +8,6 @@ use App\Category;
 
 class CategoryController extends Controller
 {
-
     public $baseRoute = "admin.category";
     public $indexRoute = "admin.category.index";
     public $model = "App\Category";
@@ -16,7 +15,6 @@ class CategoryController extends Controller
 
     public function index()
     {
-
         $q = request('q');
         $p = request('p');
         $o = request('o');
@@ -65,18 +63,17 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-       return view('admin.category.show', compact('category'));
+        return view('admin.category.show', compact('category'));
     }
 
     public function edit(Category $category)
     {
         $baseRoute = $this->baseRoute;
-        return view('admin.category.edit', compact('category','baseRoute'));   
+        return view('admin.category.edit', compact('category', 'baseRoute'));
     }
 
     public function update(Request $request, Category $category)
     {
-
         $this->validate($request, [
             'status' => 'boolean|required',
             'name' => 'string|required|unique:categories,name',
@@ -84,7 +81,7 @@ class CategoryController extends Controller
             'description' => 'text|nullable',
         ]);
 
-        $record = $category; 
+        $record = $category;
         $record->name = $request->name;
         $record->status = $request->status;
         $record->description = $request->description;
@@ -94,7 +91,6 @@ class CategoryController extends Controller
         showMessage('Kaydedildi', 'success');
 
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
-
     }
 
 
