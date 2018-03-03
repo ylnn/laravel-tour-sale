@@ -7,6 +7,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Mid
     Route::group(['prefix' => 'category'], function(){
         Route::get('index', 'CategoryController@index')->name('admin.category.index');
         Route::get('create', 'CategoryController@create')->name('admin.category.create');
+        Route::post('store', 'CategoryController@store')->name('admin.category.store');
+        Route::get('show/{category}', 'CategoryController@show')->name('admin.category.show');
         Route::get('edit/{category}', 'CategoryController@edit')->name('admin.category.edit');
     });
 
