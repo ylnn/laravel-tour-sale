@@ -14,9 +14,14 @@ class Category extends Model
     protected $dates = ['deleted_at'];
 
     /* slug belirleme */
-    public function setSlug($slug = null)
+    public function setSlug($slug)
     {
-        if($this->name != null){
+        if (!empty($slug)) {
+            $this->slug = str_slug($slug);
+            return;
+        }
+
+        if (isset($this->name)) {
             $this->slug = str_slug($this->name);
         }
     }
