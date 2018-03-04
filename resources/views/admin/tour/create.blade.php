@@ -1,17 +1,17 @@
 @extends('layout.admin')
 
 @section('content')
-    <h2>Kategori oluştur</h2>
+    <h2>Tur oluştur</h2>
     
     <div class="row">
         <div class="col-6">
         <form method="POST" action="{{ route($baseRoute . '.store') }}">
                 {{csrf_field()}}
                 <div class="form-group" style="width: 50%">
-                  <label for="status">Durum</label>
+                  <label for="status">@lang('admin.durum')</label>
                   <select class="form-control" name="status" id="status">
-                    <option value="1">Yayında</option>
-                    <option value="0">Yayında Değil</option>
+                    <option value="1">@lang('admin.yayinda')</option>
+                    <option value="0">@lang('admin.yayinda-degil')</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -23,7 +23,11 @@
                     <input type="text" class="form-control" id="slug" name="slug">
                 </div>
                 <div class="form-group">
-                    <label for="summernote">Açıklama</label>
+                    <label for="summernote">Tur açıklaması (kısa)</label>
+                    <textarea id="summernote" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="summernote">Tur Açıklaması (tamamı)</label>
                     <textarea id="summernote" name="description"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Kaydet</button>
