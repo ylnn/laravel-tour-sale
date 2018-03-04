@@ -19,6 +19,8 @@ return [
     'duzenle' => 'Düzenle',
     'sil' => 'Sil',
     'bulunamadi' => 'Bulunamadı',
+    'olustur' => 'Oluştur',
+    'search' => 'Search',
 
 
     /* Kategori */
@@ -27,5 +29,11 @@ return [
     'kategori-adi' => 'Kategori Adı',
     'kategori-seo-adi' => 'Kategori seo adı | Örnek: "gunluk-turlar" | boş bırakılabilir',
     'kategori-olustur' => 'Kategori Oluştur',
+
+    /* Tur */
+    'tur' => 'Tur',
+    'turlar' => 'Turlar',
+    'tur-adi' => 'Tur Adı',
+    'tur-seo-adi' => 'Tur seo adı | Örnek: "istanbul-sehir-turu" | boş bırakılabilir',
 
 ];
