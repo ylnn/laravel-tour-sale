@@ -22,7 +22,7 @@
           <div class="row">
 
             <div class="col-3">
-              <input type="text" class="form-control" name="q" value="{{$q}}" placeholder="Ara...">
+              <input type="text" class="form-control" name="q" value="{{$q}}" placeholder="@lang('admin.search')...">
             </div>
     
             <div class="col-2">
