@@ -20,7 +20,8 @@ return [
     'sil' => 'Sil',
     'bulunamadi' => 'Bulunamadı',
     'olustur' => 'Oluştur',
-    'search' => 'Search',
+    'search' => 'Ara',
+    'bosolabilir' => 'Boş bırakılabilir',
 
 
     /* Kategori */
@@ -34,6 +35,13 @@ return [
     'tur' => 'Tur',
     'turlar' => 'Turlar',
     'tur-adi' => 'Tur Adı',
+    'tur-aciklamasi-kisa' => 'Tur Açıklaması (kısa)',
+    'tur-aciklamasi-tamami' => 'Tur Açıklaması (tamamı)',
     'tur-seo-adi' => 'Tur seo adı | Örnek: "istanbul-sehir-turu" | boş bırakılabilir',
+    'min-katilimci' => 'Minimum katılımcı sayısı',
+    'max-katilimci' => 'Maximum katılımcı sayısı',
+    'fiyat' => 'Fiyat',
+    'single-fiyat' => 'Single Fiyat',
+    'para-birimi' => 'Para Birimi',
 
 ];
