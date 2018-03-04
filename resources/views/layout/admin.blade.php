@@ -106,6 +106,9 @@
             $('#summernote').summernote({
                 height: 300
             });
+            $('#summernote-short').summernote({
+                height: 100
+            });
         });
     </script>
 </html>
