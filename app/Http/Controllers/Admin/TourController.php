@@ -43,15 +43,17 @@ class TourController extends Controller
     {
         $this->validate($request, [
             'status' => 'boolean|required',
-            'name' => 'string|required|unique:categories,name',
+            'name' => 'string|required|unique:tours,name',
             'slug' => 'string|nullable',
             'description' => 'string|nullable',
+            'summary' => 'string|nullable',
         ]);
 
-        $record = new Category();
+        $record = new Tour();
         $record->name = $request->name;
         $record->status = $request->status;
         $record->description = $request->description;
+        $record->summary = $request->summary;
         $record->setSlug($request->slug);
         $record->save();
 
@@ -60,44 +62,45 @@ class TourController extends Controller
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
     }
 
-    public function show(Category $category)
+    public function show(Tour $tour)
     {
         return view('admin.category.show', compact('category'));
     }
 
-    public function edit(Category $category)
+    public function edit(Tour $tour)
     {
         $baseRoute = $this->baseRoute;
         return view('admin.category.edit', compact('category', 'baseRoute'));
     }
 
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Tour $tour)
     {
         $this->validate($request, [
             'status' => 'boolean|required',
             'name' => 'string|required',
             'slug' => 'string|nullable',
             'description' => 'string|nullable',
+            'summary' => 'string|nullable',
         ]);
 
-        $category->name = $request->name;
-        $category->status = $request->status;
-        $category->description = $request->description;
-        $category->setSlug($request->slug);
-        $category->save();
+        $tour->name = $request->name;
+        $tour->status = $request->status;
+        $tour->description = $request->description;
+        $tour->summary = $request->summary;
+        $tour->setSlug($request->slug);
+        $tour->save();
 
         showMessage('Kaydedildi', 'success');
 
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
     }
     
-    public function destroy(Request $request, Category $category)
+    public function destroy(Request $request, Tour $tour)
     {
-        if ($category->delete()) {
+        if ($tour->delete()) {
             showMessage('Silindi', 'success');
         }
 
-        // return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
         return back();
     }
 
