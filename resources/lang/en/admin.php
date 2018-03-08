@@ -6,7 +6,7 @@ return [
     'durum' => 'Durum',
     'yeni' => 'Yeni',
     'yayinda' => 'Yayında',
-    'yayinda-degil' => 'Yayında',
+    'yayinda-degil' => 'Yayında Değil',
     'aciklama' => 'Açıklama',
     'kaydet' => 'Kaydet',
     'iptal' => 'İptal',
