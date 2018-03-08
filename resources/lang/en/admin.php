@@ -44,4 +44,11 @@ return [
     'single-fiyat' => 'Single Fiyat',
     'para-birimi' => 'Para Birimi',
 
+    /* Tarihler */
+    'tarihler' => 'Tarihler',
+    'tarih' => 'Tarih',
+    'tarih-olustur' => 'Tarih Oluştur',
+    'baslama-tarihi' => 'Başlama Tarihi',
+    'bitis-tarihi' => 'Bitiş Tarihi',
+
 ];
