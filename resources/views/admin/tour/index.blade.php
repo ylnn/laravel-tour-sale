@@ -16,27 +16,9 @@
       </div>
     </div>
 
-    <div class="controls">
-      <form method="get">
-        <div class="search-form">
-          <div class="row">
-
-            <div class="col-3">
-              <input type="text" class="form-control" name="q" value="{{$q}}" placeholder="@lang('admin.search')...">
-            </div>
-    
-            <div class="col-2">
-              <button type="submit" class="btn btn-primary btn-sm">@lang('admin.filtrele')</button>
-            </div>
-          </div>
-          <input type="hidden" name="o" value="{{$o}}"></input>
-        </div>
-      </form>
-    </div>
-
-    <div class="table-responsive">
+    <div class="">
 {{--          <table class="table table-striped table-sm">  --}}
-        <table id="datatable">
+        <table id="datatable" class="table table-striped table-bordered" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>#</th>
@@ -80,11 +62,13 @@
 @endsection
 
 @push('css')
-  <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
+  {{--  <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">  --}}
+  <link href="{{asset('css/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 @endpush
 
 @push('scripts')
 <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/dataTables.bootstrap4.min.js')}}"></script>
   <script>
     $(document).ready(
       function(){ 
