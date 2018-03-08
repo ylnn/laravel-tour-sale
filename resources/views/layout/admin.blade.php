@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <title>TourSale</title>
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" >
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans" rel="stylesheet">
+    {{--  <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans" rel="stylesheet">  --}}
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <link href="{{asset('css/summernote/summernote-bs4.css')}}" rel="stylesheet">
