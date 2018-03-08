@@ -15,13 +15,15 @@ class CreateDatesTable extends Migration
     {
         Schema::create('dates', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('slug');
-            $table->longText('description');
-            $table->integer('min_participant');
-            $table->integer('max_participant');
+            $table->boolean('status')->default(1);
+            $table->integer('tour_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('min_participant')->default(0);
+            $table->integer('max_participant')->default(0);
             $table->integer('price');
-            $table->integer('single_price');
+            $table->integer('single_price')->nullable();
             $table->string('currency');
             $table->timestamps();
             $table->softDeletes();
