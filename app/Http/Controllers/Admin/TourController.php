@@ -14,22 +14,8 @@ class TourController extends Controller
 
     public function index()
     {
-        $q = request('q');
-        $p = request('p');
-        $o = request('o');
 
-        # start query
-        $query = $this->model::whereNotNull('id');
-
-        # order varsa, constraiti(kısıtlamayı) al, yoksa default orderBy'ı uygula.
-        $query = $o ? $this->getOrderConstrait($query, $o) : $query->orderBy('created_at', 'DESC');
-
-        # Query parametresi varsa
-        $query = $q ? $query->where('name', 'like', '%' . $q . '%') : $query;
-
-        $query->withCount('dates');
-
-        $records = $query->get();
+        $records = $this->model::withCount('dates')->get();
 
         $baseRoute = $this->baseRoute;
         
