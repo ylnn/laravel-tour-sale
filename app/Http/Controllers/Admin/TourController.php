@@ -27,6 +27,8 @@ class TourController extends Controller
         # Query parametresi varsa
         $query = $q ? $query->where('name', 'like', '%' . $q . '%') : $query;
 
+        $query->withCount('dates');
+
         $records = $query->get();
 
         $baseRoute = $this->baseRoute;
