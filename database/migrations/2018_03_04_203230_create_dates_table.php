@@ -18,8 +18,8 @@ class CreateDatesTable extends Migration
             $table->boolean('status')->default(1);
             $table->integer('tour_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->integer('min_participant')->default(0);
             $table->integer('max_participant')->default(0);
             $table->integer('price');
