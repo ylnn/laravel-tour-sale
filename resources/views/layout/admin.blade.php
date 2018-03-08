@@ -53,12 +53,12 @@
                                 Turlar
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{--  <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
                                 Tur Tarihleri
                             </a>
-                        </li>
+                        </li>  --}}
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
