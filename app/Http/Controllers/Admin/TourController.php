@@ -92,38 +92,4 @@ class TourController extends Controller
         return back();
     }
 
-    protected function getOrderConstrait($query, $o)
-    {
-        switch ($o) {
-            case 10:
-                $query->orderBy('name', 'desc');
-                break;
-            case 11:
-                $query->orderBy('name', 'asc');
-                break;
-            case 20:
-                $query->orderBy('created_at', 'desc');
-                break;
-            case 21:
-                $query->orderBy('created_at', 'asc');
-                break;
-            case 30:
-                $query->orderBy('updated_at', 'desc');
-                break;
-            case 31:
-                $query->orderBy('updated_at', 'asc');
-                break;
-            case 40:
-                $query->orderBy('status', 'desc');
-                break;
-            case 41:
-                $query->orderBy('status', 'asc');
-                break;
-
-            default: // Default Order
-            $query->orderBy('created_at', 'desc');
-            break;
-        }
-        return $query;
-    }
 }
