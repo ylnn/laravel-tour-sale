@@ -24,4 +24,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Mid
         Route::get('delete/{tour}', 'TourController@destroy')->name('admin.tour.delete');
     });
 
+    Route::group(['prefix' => 'date'], function(){
+        Route::get('index/{tour}', 'DateController@index')->name('admin.date.index');
+        Route::get('create/{tour}', 'DateController@create')->name('admin.date.create');
+        Route::post('store/{tour}', 'DateController@store')->name('admin.date.store');
+        Route::get('show/{date}', 'DateController@show')->name('admin.date.show');
+        Route::get('edit/{date}', 'DateController@edit')->name('admin.date.edit');
+        Route::post('update/{date}', 'DateController@update')->name('admin.date.update');
+        Route::get('delete/{date}', 'DateController@destroy')->name('admin.date.delete');
+    });
+
 });
