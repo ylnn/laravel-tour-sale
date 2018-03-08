@@ -11,6 +11,7 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <link href="{{asset('css/summernote/summernote-bs4.css')}}" rel="stylesheet">
+    @stack('css')
 </head>
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
@@ -111,4 +112,6 @@
             });
         });
     </script>
+
+    @stack('scripts')
 </html>
