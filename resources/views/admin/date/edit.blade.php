@@ -1,11 +1,11 @@
 @extends('layout.admin')
 
 @section('content')
-    <h2>@lang('admin.tur') @lang('admin.olustur')</h2>
+    <h2>@lang('admin.tur') @lang('admin.duzenle')</h2>
     
     <div class="row">
         <div class="col-6">
-        <form method="POST" action="{{ route($baseRoute . '.store', [$tour->id]) }}">
+        <form method="POST" action="{{ route($baseRoute . '.store', [$date->id]) }}">
                 {{csrf_field()}}
                 <div class="form-group" style="width: 50%">
                   <label for="status">@lang('admin.durum')</label>
@@ -16,7 +16,9 @@
                 </div>
                 <div class="form-group">
                     <label for="name">@lang('admin.tur-adi')</label>
-                    <p>{{ $tour->name }}</p>
+                    <p>
+                      <b>{{ $date->tour->name }}</b>
+                    </p>
                 </div>
                 <div class="form-group">
                     <label for="slug">@lang('admin.baslama-tarihi')</label>
