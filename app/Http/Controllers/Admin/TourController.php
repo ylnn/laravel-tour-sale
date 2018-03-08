@@ -64,13 +64,13 @@ class TourController extends Controller
 
     public function show(Tour $tour)
     {
-        return view('admin.category.show', compact('category'));
+        return view('admin.tour.show', compact('tour'));
     }
 
     public function edit(Tour $tour)
     {
         $baseRoute = $this->baseRoute;
-        return view('admin.category.edit', compact('category', 'baseRoute'));
+        return view('admin.tour.edit', compact('tour', 'baseRoute'));
     }
 
     public function update(Request $request, Tour $tour)
