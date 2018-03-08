@@ -4,10 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Tour;
 
 class Date extends Model
 {
     use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['start_date','end_date','deleted_at'];
+
+    public function tour()
+    {
+        return $this->belongsTo(Tour::class);
+    }
 }
