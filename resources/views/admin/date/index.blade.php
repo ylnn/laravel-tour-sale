@@ -13,26 +13,9 @@
       </div>
     </div>
 
-    {{--  <div class="controls">
-      <form method="get">
-        <div class="search-form">
-          <div class="row">
-
-            <div class="col-3">
-              <input type="text" class="form-control" name="q" value="{{$q}}" placeholder="@lang('admin.search')...">
-            </div>
-    
-            <div class="col-2">
-              <button type="submit" class="btn btn-primary btn-sm">@lang('admin.filtrele')</button>
-            </div>
-          </div>
-          <input type="hidden" name="o" value="{{$o}}"></input>
-        </div>
-      </form>
-    </div>  --}}
 
     <div class="">
-        <table id="datatable">
+        <table id="datatable" class="table table-striped table-bordered" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>#</th>
