@@ -69,4 +69,45 @@ class DateController extends Controller
         $baseRoute = $this->baseRoute;
         return view('admin.date.edit', compact('date', 'baseRoute'));   
     }
+
+    public function update(Date $date, Request $request)
+    {
+        $this->validate($request, [
+            'min_participant' => 'required|integer',
+            'max_participant' => 'required|integer|min:'.(int)$request->min_participant,
+            'price' => 'required|integer',
+            'single_price' => 'required|integer',
+            'currency' => 'required|in:TRY,USD,EUR',
+        ]);
+
+        $date->min_participant = $request->min_participant;
+        $date->max_participant = $request->max_participant;
+        $date->price = $request->price;
+        $date->single_price = $request->single_price;
+        $date->currency = $request->currency;
+
+        $date->save();
+
+        showMessage('Kaydedildi', 'success');
+
+        return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute, [$date->id]);
+    }
+
+
+    public function show(Request $request, Date $date)
+    {
+        return view('admin.date.show', compact('date'));   
+    }
+
+
+    public function destroy(Request $request, Date $date)
+    {
+        if ($date->delete()) {
+            showMessage('Silindi', 'success');
+        }
+
+        return back();
+    }
+
+    
 }
