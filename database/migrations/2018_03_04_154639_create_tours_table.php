@@ -16,6 +16,7 @@ class CreateToursTable extends Migration
         Schema::create('tours', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('status')->default(1)->index();
+            $table->integer('category_id')->index();
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->text('description')->nullable();
