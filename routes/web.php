@@ -1,8 +1,12 @@
 <?php
 
 Route::group(['namespace' => 'Front'], function (){
-    Route::get('/', 'FrontController@about')->name('about');
+    Route::get('/', 'FrontController@home')->name('home');
+    Route::get('home', function(){})->name('home');
 });
+
+    Route::get('loginform', function () {})->name('auth.loginform');
+    Route::get('register', function () {})->name('auth.register');
 
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Middleware: admin eklenecek */
