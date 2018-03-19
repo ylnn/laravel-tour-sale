@@ -10,7 +10,6 @@ class FrontController extends Controller
 {
     public function home()
     {
-        $categories = Category::get();
-        return view('front.home', compact('categories'));
+        return view('front.home');
     }
 }
