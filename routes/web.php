@@ -1,8 +1,13 @@
 <?php
 
+Route::group(['namespace' => 'Front'], function (){
+    Route::get('/', 'FrontController@about')->name('about');
+});
+
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Middleware: admin eklenecek */
 
-    Route::get('index', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
     Route::group(['prefix' => 'category'], function(){
         Route::get('index', 'CategoryController@index')->name('admin.category.index');
