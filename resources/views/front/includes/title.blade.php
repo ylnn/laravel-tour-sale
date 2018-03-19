@@ -1,1 +1,0 @@
-<h3 class="pb-3 mb-4 border-bottom">{{$title}}</h3>
