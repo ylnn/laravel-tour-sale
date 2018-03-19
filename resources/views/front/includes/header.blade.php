@@ -57,9 +57,11 @@
 
         <div class="nav-scroller py-1 mb-5" style="">
             <nav class="nav d-flex ">
-                @foreach ($categories as $category)
-                    <a class="p-3 text-muted" href="{{ route('home') }}">{{$category->name}}</a>
-                @endforeach
+                @isset($categories)
+                    @foreach ($categories as $category)
+                        <a class="p-3 text-muted" href="{{ route('category', [$category->id]) }}">{{$category->name}}</a>
+                    @endforeach
+                @endif
             </nav>
         </div>
 
