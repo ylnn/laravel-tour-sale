@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Tour;
 
 class Category extends Model
 {
@@ -11,7 +12,12 @@ class Category extends Model
 
     protected $dates = ['deleted_at'];
 
-    /* slug belirleme */
+    public function tours()
+    {
+        return $this->hasMany(Tour::class);
+    }
+
+    /* slug defination */
     public function setSlug($slug)
     {
         if (!empty($slug)) {
@@ -23,4 +29,5 @@ class Category extends Model
             $this->slug = str_slug($this->name);
         }
     }
+    /* slug defination end */
 }
