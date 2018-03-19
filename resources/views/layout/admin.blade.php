@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>TourSale</title>
+    <title>TourSale Panel</title>
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" >
     {{--  <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans" rel="stylesheet">  --}}
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
