@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Date;
+use App\Category;
 
 class Tour extends Model
 {
@@ -15,6 +16,11 @@ class Tour extends Model
     public function dates()
     {
         return $this->hasMany(Date::class);   
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     /* slug belirleme */
