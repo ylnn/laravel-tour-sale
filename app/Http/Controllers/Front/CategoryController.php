@@ -10,6 +10,7 @@ class CategoryController extends Controller
 {
     public function show(Category $category)
     {
-        return view('front.category', compact('category'));
+        $tours = $category->tours;
+        return view('front.category', compact('category', 'tours'));
     }
 }
