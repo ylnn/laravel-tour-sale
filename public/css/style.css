@@ -8,3 +8,17 @@
     padding: 20px;
     margin-bottom: 10px;
 }
+
+.popularTours {
+    display: block;
+    min-height: 300px;
+}
+
+.popularTours ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.popularTours li {
+    float: left;
+}
