@@ -8,10 +8,8 @@
     <title>TourSale Front</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" >
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans" rel="stylesheet">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this template -->
-    {{--  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">  --}}
     <link href="{{asset('css/theme.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/lightslider.min.css')}}" rel="stylesheet">

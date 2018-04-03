@@ -1,0 +1,10 @@
+.tour-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.border {
+    border: 1px solid silver;
+    padding: 20px;
+    margin-bottom: 10px;
+}
