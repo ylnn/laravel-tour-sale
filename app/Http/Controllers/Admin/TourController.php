@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tour;
+use App\Category;
 
 class TourController extends Controller
 {
@@ -24,7 +25,8 @@ class TourController extends Controller
 
     public function create()
     {
-        return view($this->baseRoute . '.create', ['baseRoute' => $this->baseRoute]);
+        $categories = Category::all();
+        return view($this->baseRoute . '.create', ['baseRoute' => $this->baseRoute, 'categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -32,6 +34,7 @@ class TourController extends Controller
         $this->validate($request, [
             'status' => 'boolean|required',
             'name' => 'string|required|unique:tours,name',
+            'category_id' => 'integer|required|exists:categories,id',
             'slug' => 'string|nullable',
             'description' => 'string|nullable',
             'summary' => 'string|nullable',
@@ -39,6 +42,7 @@ class TourController extends Controller
 
         $record = new Tour();
         $record->name = $request->name;
+        $record->category_id = $request->category_id;
         $record->status = $request->status;
         $record->description = $request->description;
         $record->summary = $request->summary;
