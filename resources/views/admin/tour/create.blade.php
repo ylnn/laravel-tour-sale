@@ -14,9 +14,20 @@
                     <option value="0">@lang('admin.yayinda-degil')</option>
                   </select>
                 </div>
+
+                <div class="form-group" style="width: 50%">
+                    <label for="name">@lang('admin.kategori')</label>
+                    <select name="category_id" id="category_id" class="form-control">
+                      @isset($categories)
+                        @foreach ($categories as $category)
+                          <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                      @endif
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="name">@lang('admin.tur-adi')</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" autofocus required>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" autofocus required>
                 </div>
                 <div class="form-group">
                     <label for="slug">@lang('admin.tur-seo-adi')</label>
