@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Category;
 use App\Tour;
+use Illuminate\Support\Carbon;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -26,18 +27,24 @@ class CategoriesTableSeeder extends Seeder
             'name' => 'Kültür Turları',
             'slug' => 'kultur-turlari',
             'description' => 'Muhteşem kültürleri bizimle keşfedin!',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
          DB::table('categories')->insert([
             'status' => 1,
             'name' => 'Yurtdışı Turları',
             'slug' => 'yurtdisi-turlari',
             'description' => 'Yurtdışına bizimle açılın!',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
          DB::table('categories')->insert([
             'status' => 1,
             'name' => 'Karadeniz Turları',
             'slug' => 'karadeniz-turlari',
             'description' => 'Karadeniz yeşilliklerinin keyfini bizimle çıkarın.',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
     }
 }
