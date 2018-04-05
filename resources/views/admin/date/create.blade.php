@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
-    <h2>@lang('admin.tur') @lang('admin.olustur')</h2>
+    <h2>@lang('admin.tarih') @lang('admin.olustur')</h2>
     
     <div class="row">
         <div class="col-6">
