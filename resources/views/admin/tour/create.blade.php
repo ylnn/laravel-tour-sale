@@ -65,6 +65,9 @@
                     <option value="EUR">EUR</option>
                   </select>
                 </div>   --}}
+                <div id="app">
+                    <photo-upload-component></photo-upload-component>
+                </div>
                 <button type="submit" class="btn btn-primary">@lang('admin.kaydet')</button>
                 <a href="{{ url()->previous() }}" class="btn btn-secondary">@lang('admin.iptal')</a>
                 <input type="hidden" name="previous" value="{{ url()->previous() }}">
