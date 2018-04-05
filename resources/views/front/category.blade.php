@@ -17,7 +17,7 @@
                         </div>
                         <div class="col">
                             <h5><a href="{{$tourDetailLink}}">{{$tour->name}}</a></h5>
-                            <p>{{$tour->summary}}</p>
+                            <p>{!!$tour->summary!!}</p>
                             <p>
                                 <a name="" id="" class="btn btn-primary" href="{{$tourDetailLink}}" role="button">Tarihleri göster</a>
                             </p>
