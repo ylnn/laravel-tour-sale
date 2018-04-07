@@ -31,7 +31,13 @@
               @foreach ($records as $record)
                 <tr>
                   <td>{{$record->id}}</td>
-                  <td>@if($record->status) @lang('admin.yayinda') @else @lang('admin.yayinda-degil') @endif</td>
+                  <td>@if($record->status == 1) 
+                        <span class="badge badge-success">@lang('admin.yayinda')</span>
+                      @elseif($record->status == 0) 
+                        <span class="badge badge-danger">@lang('admin.yayinda-degil')</span>
+                      @elseif($record->status == 2) 
+                        <span class="badge badge-warning">@lang('admin.taslak')</span>   
+                      @endif</td>
                   <td>{{$record->name}}</td>
                   <td>
                       <a href="{{ route('admin.date.index', [$record->id]) }}" class="btn btn-info btn-sm">@lang('admin.tarihler') ({{ $record->dates_count }})</a>
