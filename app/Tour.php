@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Date;
 use App\Category;
+use App\Photo;
 
 class Tour extends Model
 {
@@ -21,6 +22,11 @@ class Tour extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function photos()
+    {
+        return $this->belongsToMany(Photo::class);   
     }
 
     /* slug belirleme */
