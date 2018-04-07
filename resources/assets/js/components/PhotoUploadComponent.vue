@@ -1,50 +1,44 @@
 <template>
-        <div>
+    <div>
         <hr />
-            <form :action="url" method="POST" enctype="multipart/form-data" v-on:submit.prevent="onSubmit">
-
-            
+        <form :action="url" method="POST" enctype="multipart/form-data" v-on:submit.prevent="onSubmit">
 
             <div class="row">
                 <div class="col-md-8">
                     <div class="form-group">
-                    
-                            <input type="file" id="photos" name="photos" class="form-control" v-on:change="newFile" multiple>
-            
-                        </div>
+                        <input type="file" id="photos" name="photos" class="form-control" v-on:change="newFile" multiple>
+                    </div>
                 </div>
                 <div class="col-md-4">
-            
-                <div class="form-group">
-
-                    <button type="submit" class="btn btn-default"><i class="fa fa-upload"></i> Yükle</button>
-
-                </div>
-            
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">
+                            <i class="fa fa-upload"></i> Yükle</button>
+                    </div>
                 </div>
             </div>
 
-            </form>
-            
-            <div class="row">
-                <div class="col-md-12">
+        </form>
+
+        <div class="row">
+            <div class="col-md-12">
                 <div v-text="message"></div>
-                </div>
             </div>
-            
-            <hr />
-
-            <button v-on:click="getir" class="btn btn-info"><i class="fa fa-refresh"></i> Yenile</button>
-
-            <ul class="photo-list">
-                <li v-for="photo in photos" v-bind:key="photo.id">
-                    <img class="img img-responsive" :src="'/storage/entry_images_thumbs/' + photo.thumb_filename" />
-                    <button class="btn btn-sm btn-danger" v-on:click="onDelete(photo.id)">Sil</button>
-                </li>
-            </ul>
         </div>
 
-    </template>
+        <hr />
+
+        <button v-on:click="getir" class="btn btn-info">
+            <i class="fa fa-refresh"></i> Yenile</button>
+
+        <ul class="photo-list">
+            <li v-for="photo in photos" v-bind:key="photo.id">
+                <img class="img img-responsive" :src="'/storage/entry_images_thumbs/' + photo.thumb_filename" />
+                <button class="btn btn-sm btn-danger" v-on:click="onDelete(photo.id)">Sil</button>
+            </li>
+        </ul>
+    </div>
+
+</template>
 
     <script>
         export default {
