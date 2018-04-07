@@ -25,8 +25,8 @@ class TourController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
-        return view($this->baseRoute . '.create', ['baseRoute' => $this->baseRoute, 'categories' => $categories]);
+        $tour = Tour::create(['status' => 2]);
+        return redirect()->route('admin.tour.edit', [$tour]);
     }
 
     public function store(Request $request)
