@@ -22,6 +22,7 @@ return [
     'olustur' => 'Oluştur',
     'search' => 'Ara',
     'bosolabilir' => 'Boş bırakılabilir',
+    'taslak' => 'Taslak',
 
 
     /* Kategori */
