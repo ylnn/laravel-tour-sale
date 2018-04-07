@@ -12,6 +12,8 @@ class Tour extends Model
 {
     use SoftDeletes;
 
+    protected $guarded = [];
+
     protected $dates = ['deleted_at'];
 
     public function dates()
