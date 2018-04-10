@@ -101,3 +101,13 @@ body {
 .controls input {
   font-size: 13px;
 }
+
+ .vue-photo-list {
+   padding: 0;
+   margin-top: 10px; 
+   list-style: none;
+}
+.vue-photo-list li {
+   margin-top:10px; 
+   margin-right: 20px;
+} 
