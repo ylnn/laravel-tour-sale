@@ -52,10 +52,6 @@
                   <label for="price">@lang('admin.fiyat')</label>
                   <input type="number" name="price" id="price" class="form-control" value="{{ $date->price }}">
                 </div>
-                <div class="form-group">
-                  <label for="single_price">@lang('admin.single-fiyat')</label>
-                  <input type="number" name="single_price" id="single_price" class="form-control" value="{{ $date->single_price }}">
-                </div>
                 <button type="submit" class="btn btn-primary">@lang('admin.kaydet')</button>
                 <a href="{{ url()->previous() }}" class="btn btn-secondary">@lang('admin.iptal')</a>
                 <input type="hidden" name="previous" value="{{ url()->previous() }}">
