@@ -42,7 +42,6 @@ class DateController extends Controller
             'min_participant' => 'required|integer',
             'max_participant' => 'required|integer|min:'.(int)$request->min_participant,
             'price' => 'required|integer',
-            'single_price' => 'required|integer',
             'currency' => 'required|in:TRY,USD,EUR',
         ]);
 
@@ -54,7 +53,6 @@ class DateController extends Controller
         $date->min_participant = $request->min_participant;
         $date->max_participant = $request->max_participant;
         $date->price = $request->price;
-        $date->single_price = $request->single_price;
         $date->currency = $request->currency;
 
         $date->save();
@@ -76,14 +74,12 @@ class DateController extends Controller
             'min_participant' => 'required|integer',
             'max_participant' => 'required|integer|min:'.(int)$request->min_participant,
             'price' => 'required|integer',
-            'single_price' => 'required|integer',
             'currency' => 'required|in:TRY,USD,EUR',
         ]);
 
         $date->min_participant = $request->min_participant;
         $date->max_participant = $request->max_participant;
         $date->price = $request->price;
-        $date->single_price = $request->single_price;
         $date->currency = $request->currency;
 
         $date->save();
