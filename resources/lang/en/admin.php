@@ -23,7 +23,7 @@ return [
     'search' => 'Ara',
     'bosolabilir' => 'Boş bırakılabilir',
     'taslak' => 'Taslak',
-
+    'fotograflar' => 'Fotoğraflar',
 
     /* Kategori */
     'kategori' => 'Kategori',
@@ -51,5 +51,16 @@ return [
     'tarih-olustur' => 'Tarih Oluştur',
     'baslama-tarihi' => 'Başlama Tarihi',
     'bitis-tarihi' => 'Bitiş Tarihi',
+
+    /* Vue kelimeleri */
+    'yukle' => 'Yükle',
+    'yenile' => 'Yenile',
+    'fotograf-seciniz' => 'Fotoğraf seçiniz...',
+    'once-fotograf-seciniz' => 'Önce fotoğraf seçiniz...',
+    'yukleniyor' => 'Yükleniyor...',
+    'yuklendi' => 'Yüklendi.',
+    'hata-olustu' => 'Hata oluştu.',
+    'silindi' => 'Silindi.',
+
 
 ];
