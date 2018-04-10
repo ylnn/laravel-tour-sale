@@ -10,6 +10,8 @@ Route::group(['namespace' => 'Front'], function (){
     Route::get('register', function () {})->name('auth.register');
 
 
+
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Middleware: admin eklenecek */
 
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
@@ -43,5 +45,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Mid
         Route::post('update/{date}', 'DateController@update')->name('admin.date.update');
         Route::get('delete/{date}', 'DateController@destroy')->name('admin.date.delete');
     });
+    
+    Route::get('get_photos_ajax/{tour}', 'TourController@getPhotos')->name('getPhotosAjax');
+    Route::post('upload_photo_ajax', 'TourController@storePhoto')->name('uploadPhoto');
+    Route::post('delete_photo_ajax', 'TourController@deletePhoto')->name('deletePhoto');
+    
+    Route::get('get_vue_lang', 'TourController@getLangForVue');
 
 });
