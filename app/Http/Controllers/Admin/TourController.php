@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tour;
 use App\Category;
+use App\Photo;
+use Validator;
+use Illuminate\Validation\Rule;
 
 class TourController extends Controller
 {
@@ -15,17 +18,17 @@ class TourController extends Controller
 
     public function index()
     {
-
         $records = $this->model::withCount('dates')->get();
-
         $baseRoute = $this->baseRoute;
-        
         return view('admin.tour.index', compact('records', 'q', 'p', 'o', 'baseRoute'));
     }
 
     public function create()
     {
-        $tour = Tour::create(['status' => 2]);
+        // $tour = Tour::create(['status' => 2]);
+        $tour = new Tour;
+        $tour->status = 2;
+        $tour->save();
         return redirect()->route('admin.tour.edit', [$tour]);
     }
 
@@ -77,6 +80,7 @@ class TourController extends Controller
 
         $tour->name = $request->name;
         $tour->status = $request->status;
+        $tour->category_id = $request->category_id;
         $tour->description = $request->description;
         $tour->summary = $request->summary;
         $tour->setSlug($request->slug);
@@ -96,4 +100,85 @@ class TourController extends Controller
         return back();
     }
 
+
+    //photos
+
+    public function getPhotos(Tour $tour)
+    {
+        $photos = $tour->photos()->get();
+        if ($photos->isEmpty()) {
+            return response()->json('', 201);
+        }
+
+        return $photos;
+    }
+    public function storePhoto(Request $request)
+    {
+        $validator = $this->storePhotoValidator($request);
+
+        if ($validator->fails()) {
+            return response()->json($validator->messages(), 403);
+        }
+
+        $tour = Tour::findOrFail($request['id']);
+
+        $photoController = new PhotoController;
+        $upload = $photoController->upload($request, 'tour_images');
+
+        if (!$upload) {
+            return response()->json('photo controller error', 403);
+        }
+
+        $photo = Photo::find($upload);
+        $tour->photos()->save($photo);
+        return response()->json('ok', 200);
+    }
+
+    public function deletePhoto(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer|exists:photos,id|exists:photo_tour,photo_id',
+            'content_id' => 'required|integer|exists:tours,id'
+        ]);
+
+        if($validator->fails()){
+            return response()->json('validation error', 403);
+        }
+
+        $tour = Tour::find($request['content_id']);
+        $tour->photos()->detach($request['id']);
+
+        return response()->json('ok', 200);
+        
+    }
+
+    public function getLangForVue(Request $request)
+    {
+        $vueLang = [
+            'yukle' => trans('admin.yukle'),
+            'yenile' => trans('admin.yenile'),
+            'sil' => trans('admin.sil'),
+            'fotograf-seciniz' => trans('admin.fotograf-seciniz'),
+            'once-fotograf-seciniz' => trans('admin.once-fotograf-seciniz'),
+            'yukleniyor' => trans('admin.yukleniyor'),
+            'yuklendi' => trans('admin.yuklendi'),
+            'hata-olustu' => trans('admin.hata-olustu'),
+            'silindi' => trans('admin.silindi'),
+        ];
+
+        return response()->json($vueLang, 200);
+    }
+
+    protected function storePhotoValidator(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'photo' => [
+                'required',
+                Rule::dimensions()->maxWidth(3000)->maxHeight(2000)
+            ],
+            'id' => 'required|integer'
+        ]);
+
+        return $validator;
+    }
 }
