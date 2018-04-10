@@ -17,7 +17,7 @@ class CreatePhotoTourTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('photo_id');
             $table->unsignedInteger('tour_id');
-            $table->timestamps();
+            $table->unsignedInteger('order');
         });
     }
 
