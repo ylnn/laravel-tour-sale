@@ -23,7 +23,6 @@ class CreateDatesTable extends Migration
             $table->integer('min_participant')->default(0);
             $table->integer('max_participant')->default(0);
             $table->integer('price');
-            $table->integer('single_price')->nullable();
             $table->string('currency');
             $table->timestamps();
             $table->softDeletes();
