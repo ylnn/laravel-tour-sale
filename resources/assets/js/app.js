@@ -20,10 +20,8 @@ window.axios = require('axios');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('photo-upload-component', require('./components/PhotoUploadComponent.vue'));
+Vue.component('reservation-form-component', require('./components/ReservationFormComponent.vue'));
 
 const app = new Vue({
     el: '#app',
-
-
-
 });
