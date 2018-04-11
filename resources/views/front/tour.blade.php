@@ -23,7 +23,7 @@
                     <td>{{$date->end_date->format('d/m/Y')}}</td>
                     <td>{{$date->price}} {{ $date->currency }}</td>
                     <td>{{$date->single_price}} {{ $date->currency }}</td>
-                    <td><a name="" id="" class="btn btn-info" href="#" role="button">Rezervasyon Yap</a></td>
+                    <td><a name="" id="" class="btn btn-info" href="{{route('reservation.show', [$date->id])}}" role="button">Rezervasyon Yap</a></td>
                 </tr>
             @endforeach
         </table>
