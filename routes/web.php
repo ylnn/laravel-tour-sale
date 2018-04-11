@@ -4,6 +4,8 @@ Route::group(['namespace' => 'Front'], function (){
     Route::get('/', 'FrontController@home')->name('home');
     Route::get('category/{category}', 'CategoryController@show')->name('category');
     Route::get('tour/{tour}', 'TourController@show')->name('tour');
+
+    Route::get('reservation/{date}', 'TourController@reservationShow')->name('reservation.show');
 });
 
     Route::get('loginform', function () {})->name('auth.loginform');
