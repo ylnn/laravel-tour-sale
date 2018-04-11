@@ -12,6 +12,9 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PhotoController extends Controller
 {
+    public $photoSizes = ['width' => 700, 'height' => 400]; // width, height
+    public $thumbSizes = ['width' => 370, 'height' => 220]; // width, height
+
     protected $mainFolder = 'public/';
 
     public function form()
@@ -62,7 +65,7 @@ class PhotoController extends Controller
     protected function makeAndStoreImage($photoRealPath, $path)
     {
         //make image
-        $image = Image::make($photoRealPath)->fit(700, 400, function ($constraint) {
+        $image = Image::make($photoRealPath)->fit($this->photoSizes['width'], $this->photoSizes['height'], function ($constraint) {
             $constraint->upsize();
         });
         if(!$image){
@@ -79,7 +82,7 @@ class PhotoController extends Controller
     protected function makeAndStoreImageThumb($photoRealPath, $path_thumb)
     {
         // make thumb image
-        $image_thumb = Image::make($photoRealPath)->fit(300, null, function ($constraint) {
+        $image_thumb = Image::make($photoRealPath)->fit($this->thumbSizes['width'], $this->thumbSizes['height'], function ($constraint) {
             $constraint->upsize();
         });
 
