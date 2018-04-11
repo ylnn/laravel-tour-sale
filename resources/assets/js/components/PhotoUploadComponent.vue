@@ -33,13 +33,8 @@
         </button>
 
         <ul class="vue-photo-list ">
-            <!-- <li v-for="photo in photos" v-bind:key="photo.id">
-                <img width="70" class="img img-responsive" :src="url + '/storage/' + photo.filename_thumb" />
-                <button class="btn btn-sm btn-danger" v-on:click="onDelete(photo.id)">{{lang.sil}}</button>
-            </li> -->
-
             <draggable name="drag" v-model="photos" @start="drag=true" @end="drag=false">
-                    <li v-for="(photo) in photos" v-bind:key="photo.id" class="photoitem">
+                    <li v-for="photo in photos" v-bind:key="photo.id" class="photoitem">
                             <img width="100" class="img img-responsive" :src="url + '/storage/' + photo.filename_thumb" />
                             <button class="btn btn-sm btn-danger" v-on:click="onDelete(photo.id)">X</button>
                     </li>
@@ -55,146 +50,148 @@
     axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[name="csrf-token"]').getAttribute('value');
 
     import draggable from 'vuedraggable';
-        export default {
+    export default {
 
-            props: ['url', 'record_id'],
+        props: ['url', 'record_id'],
 
-            components: {
-                draggable,
-            },
-            data() {
-                return {
-                    'id' : this.record_id,
-                    'uploadPhotos' : '',
-                    'message': '',
-                    'photos': [],
-                    'lang' : [],
+        components: {
+            draggable,
+        },
+        data() {
+            return {
+                'id': this.record_id,
+                'uploadPhotos': '',
+                'message': '',
+                'photos': [],
+                'lang': [],
 
-                    //Urls:
-                    'get_photos_url': '/admin/get_photos_ajax/',
-                    'upload_post_url': '/admin/upload_photo_ajax',
-                    'delete_post_url': '/admin/delete_photo_ajax',
+                //Urls:
+                'get_photos_url': '/admin/get_photos_ajax/',
+                'upload_post_url': '/admin/upload_photo_ajax',
+                'delete_post_url': '/admin/delete_photo_ajax',
 
-                    'get_lang_variables_url' : '/admin/get_vue_lang',
-                }
-            },
-            methods: {
-                getPhotos: function () {
-                        axios.get(this.url + this.get_photos_url + this.id)
-                            .then(function (response) {
-                                console.log('success...');
-                                this.photos = response.data;
-                            }.bind(this))
-                            .catch(function (error) {
-                                console.log('error...');
-                            });
-                    },
-
-
-                    post: function () {
-
-                        let length = this.uploadPhotos.length;
-
-                        console.log('Length: ' + length);
-
-                        if (length == 0) {
-
-                            this.setMessage(this.lang['once-fotograf-seciniz'])
-
-                        } else {
-
-                            this.setMessage(this.lang['yukleniyor'])
-
+                'get_lang_variables_url': '/admin/get_vue_lang',
+            }
+        },
+        methods: {
+            getPhotos: function () {
+                axios.get(this.url + this.get_photos_url + this.id)
+                    .then(function (response) {
+                        if(Array.isArray(response.data)){
+                            console.log('get success...');
+                            this.photos = response.data;
                         }
-
-                        for (var photo of this.uploadPhotos) {
-
-                            let data = new FormData();
-                            data.set('id', this.id);
-                            data.set('photo', photo);
-
-                            axios.post(this.url + this.upload_post_url, data)
-                                .then(function (response) {
-                                    this.setMessage(this.lang['yuklendi'])
-                                    this.getir();
-                                }.bind(this))
-                                .catch(function (error) {
-                                    this.setMessage(this.lang['hata-olustu'])
-                                }.bind(this));
-
-                        }
+                    }.bind(this))
+                    .catch(function (error) {
+                        console.log('get error...');
+                    });
+            },
 
 
-                        // clear file input selected images...
-                        this.$refs.fileInput.value = null;
+            post: function () {
 
-                    },
+                let length = this.uploadPhotos.length;
 
-                    getir: function () {
+                console.log('Length: ' + length);
 
-                        this.getPhotos();
+                if (length == 0) {
 
-                    },
+                    this.setMessage(this.lang['once-fotograf-seciniz'])
 
+                } else {
 
-                    onSubmit: function () {
+                    this.setMessage(this.lang['yukleniyor'])
 
-                        this.post();
-
-                    },
-
-                    onDelete: function (photoid) {
-
-                        axios.post(this.url + this.delete_post_url, {
-                                'content_id' : this.id, // content id
-                                'id': photoid // photo id for deleting
-                            })
-                            .then(function (response) {
-                                console.log('delete success...');
-                                this.setMessage('Silindi.')
-
-                                this.getir();
-                            }.bind(this))
-                            .catch(function (error) {
-                                this.setMessage('Silinirken hata oluştu...')
-                                console.log('delete hata');
-                            });
-                    },
-
-                    getLang: function() {
-                       axios.get(this.url + this.get_lang_variables_url)
-                            .then(function (response) {
-                                console.log('success...');
-                                this.lang = response.data;
-                            }.bind(this))
-                            .catch(function (error) {
-                                console.log('error...');
-                            }); 
-                    },
-
-                    newFile(event) {
-                        console.log('...');
-                        let files = event.target.files;
-                        if (files.length) this.uploadPhotos = files;
-                    },
-
-                    setMessage(message) {
-
-                        this.message = message;
-
-                    }
-
-
-                },
-
-                mounted() {
-                        console.log('Component mounted.')
-                    },
-
-                created() {
-                    this.getLang();
-                    this.getPhotos();
                 }
+
+                for (var photo of this.uploadPhotos) {
+
+                    let data = new FormData();
+                    data.set('id', this.id);
+                    data.set('photo', photo);
+
+                    axios.post(this.url + this.upload_post_url, data)
+                        .then(function (response) {
+                            this.setMessage(this.lang['yuklendi'])
+                            this.getir();
+                        }.bind(this))
+                        .catch(function (error) {
+                            this.setMessage(this.lang['hata-olustu'])
+                        }.bind(this));
+
+                }
+
+
+                // clear file input selected images...
+                this.$refs.fileInput.value = null;
+
+            },
+
+            getir: function () {
+
+                this.getPhotos();
+
+            },
+
+
+            onSubmit: function () {
+
+                this.post();
+
+            },
+
+            onDelete: function (photoid) {
+
+                axios.post(this.url + this.delete_post_url, {
+                        'content_id': this.id, // content id
+                        'id': photoid // photo id for deleting
+                    })
+                    .then(function (response) {
+                        console.log('delete success...');
+                        this.setMessage('Silindi.')
+
+                        this.getir();
+                    }.bind(this))
+                    .catch(function (error) {
+                        this.setMessage('Silinirken hata oluştu...')
+                        console.log('delete hata');
+                    });
+            },
+
+            getLang: function () {
+                axios.get(this.url + this.get_lang_variables_url)
+                    .then(function (response) {
+                        console.log('get lang success...');
+                        this.lang = response.data;
+                    }.bind(this))
+                    .catch(function (error) {
+                        console.log('get lang error...');
+                    });
+            },
+
+            newFile(event) {
+                console.log('...');
+                let files = event.target.files;
+                if (files.length) this.uploadPhotos = files;
+            },
+
+            setMessage(message) {
+
+                this.message = message;
+
+            }
+
+
+        },
+
+        mounted() {
+            console.log('Component mounted.')
+        },
+
+        created() {
+            this.getLang();
+            this.getPhotos();
+        }
 
 
     }
