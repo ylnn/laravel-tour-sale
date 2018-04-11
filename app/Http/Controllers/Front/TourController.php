@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Tour;
+use App\Date;
 
 class TourController extends Controller
 {
@@ -13,5 +14,14 @@ class TourController extends Controller
     {
         // return 'tour-detail ' . request('tour');
         return view('front.tour', compact('tour'));
+    }
+
+    public function reservationShow(Date $date)
+    {
+        $tour = $date->tour;
+        if((!$tour) or ($tour->status !== 1)){
+            return 'tour not found.'; 
+        }
+        return view('front.reservation_show', compact('tour', 'date'));
     }
 }
