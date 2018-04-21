@@ -43,6 +43,7 @@ return [
     'fiyat' => 'Fiyat',
     'single-fiyat' => 'Single Fiyat',
     'para-birimi' => 'Para Birimi',
+    'kisi-basi' => 'Kişi Başı',
 
     /* Tarihler */
     'tarihler' => 'Tarihler',
