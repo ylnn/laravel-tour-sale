@@ -42,8 +42,11 @@ return [
     'max-katilimci' => 'Maximum katılımcı sayısı',
     'fiyat' => 'Fiyat',
     'single-fiyat' => 'Single Fiyat',
+    'toplam-fiyat' => 'Toplam Fiyat',
     'para-birimi' => 'Para Birimi',
     'kisi-basi' => 'Kişi Başı',
+    'kisi-sayisi' => 'Kişi Sayısı',
+    'devam-et' => 'Devam et',
 
     /* Tarihler */
     'tarihler' => 'Tarihler',
