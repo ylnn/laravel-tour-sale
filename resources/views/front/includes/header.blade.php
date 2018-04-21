@@ -14,8 +14,8 @@
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/lightslider.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/summernote/summernote-bs4.css')}}" rel="stylesheet">
-    <script src="{{asset('js/app.js')}}"></script>
     {{--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  --}}
+    @stack('header_js')
 </head>
 <body>
     <div class="container">
