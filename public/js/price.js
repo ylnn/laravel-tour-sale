@@ -13186,15 +13186,47 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 32 */
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(44);
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+window.Vue = __webpack_require__(10);
+
+window.axios = __webpack_require__(13);
+
+Vue.component('price-component', __webpack_require__(45));
+
+var app = new Vue({
+    el: '#price'
+});
+
+/***/ }),
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(9)
 /* script */
-var __vue_script__ = __webpack_require__(33)
+var __vue_script__ = __webpack_require__(46)
 /* template */
-var __vue_template__ = __webpack_require__(34)
+var __vue_template__ = __webpack_require__(47)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -13211,7 +13243,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/ReservationFormComponent.vue"
+Component.options.__file = "resources/assets/js/components/PriceComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -13220,9 +13252,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5fc37e38", Component.options)
+    hotAPI.createRecord("data-v-7492b9ab", Component.options)
   } else {
-    hotAPI.reload("data-v-5fc37e38", Component.options)
+    hotAPI.reload("data-v-7492b9ab", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -13233,7 +13265,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 33 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13261,40 +13293,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: ['date_id'],
+    props: ['date_id', 'price', 'currency', 'step2_url'],
 
     data: function data() {
         return {
-            'adult': 1,
-            'participants': [{
-                'gender': 'mr',
-                'name': 'name'
-            }]
+            'adult': 1
         };
     },
 
 
+    methods: {
+        redirectToStep2: function redirectToStep2() {
+            window.location.href = this.step2_url + '/' + this.date_id + '/' + this.adult;
+        }
+    },
+
     computed: {
-        partCounts: function partCounts() {
-            return this.participants.length;
+        totalPrice: function totalPrice() {
+            return this.adult * this.price;
         }
     },
 
@@ -13304,120 +13323,75 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 34 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("h3", [_vm._v("Reservation Form")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Please fill the form")
-          ]),
+  return _c("div", [
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "adult" } }, [_vm._v("Kişi sayısı")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model.number",
+              value: _vm.adult,
+              expression: "adult",
+              modifiers: { number: true }
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { name: "adult", id: "adult" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return _vm._n(val)
+                })
+              _vm.adult = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
+        },
+        [
+          _c("option", { attrs: { value: "1" } }, [_vm._v("1 Kişi")]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "adult" } }, [
-                  _vm._v("Kişi sayısı")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model.number",
-                        value: _vm.adult,
-                        expression: "adult",
-                        modifiers: { number: true }
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { name: "adult", id: "adult" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return _vm._n(val)
-                          })
-                        _vm.adult = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "1" } }, [_vm._v("1 Kişi")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "2" } }, [_vm._v("2 Kişi")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "3" } }, [_vm._v("3 Kişi")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "4" } }, [_vm._v("4 Kişi")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "5" } }, [_vm._v("5 Kişi")])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
-              _c("h2", [_vm._v("Katılımcılar:")]),
-              _vm._v(" "),
-              _vm._l(_vm.participants, function(item, index) {
-                return _c("div", { key: index, staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "p1" } }, [_vm._v("Katılımcı ")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.participants[index].name,
-                        expression: "participants[index].name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", name: "p1" },
-                    domProps: { value: _vm.participants[index].name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.participants[index],
-                          "name",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ])
-              }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Katılımcı sayısı " + _vm._s(_vm.partCounts))]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Date ID: " + _vm._s(_vm.date_id))])
-            ],
-            2
-          )
-        ])
-      ])
+          _c("option", { attrs: { value: "2" } }, [_vm._v("2 Kişi")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "3" } }, [_vm._v("3 Kişi")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "4" } }, [_vm._v("4 Kişi")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "5" } }, [_vm._v("5 Kişi")])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("p", [
+      _vm._v("Total Price: " + _vm._s(_vm.currency) + " "),
+      _c("b", [_vm._v(_vm._s(_vm.totalPrice))])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticStyle: { "padding-top": "20px" } }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success btn-lg",
+          on: { click: _vm.redirectToStep2 }
+        },
+        [_vm._v("Devam Et")]
+      )
     ])
   ])
 }
@@ -13427,38 +13401,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5fc37e38", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7492b9ab", module.exports)
   }
 }
-
-/***/ }),
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(44);
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-window.Vue = __webpack_require__(10);
-
-window.axios = __webpack_require__(13);
-
-Vue.component('reservation-form-component', __webpack_require__(32));
-
-var app = new Vue({
-    el: '#reservation'
-});
 
 /***/ })
 /******/ ]);
