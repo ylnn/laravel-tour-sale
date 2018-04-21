@@ -22,10 +22,11 @@
                         <hr>
                         <h2>Katılımcılar:</h2>
 
-                        <div class="form-group" v-for="a in adult" v-bind:key="a">
-                            <label for="p1">Katılımcı {{a}}</label>
-                            <input type="text" class="form-control" name="p1">
+                        <div class="form-group" v-for="(item, index) in participants" v-bind:key="index">
+                            <label for="p1">Katılımcı </label>
+                            <input type="text" class="form-control" name="p1" v-model="participants[index].name">
                         </div>
+                        <p>Katılımcı sayısı {{partCounts}}</p>
                         <p>Date ID: {{date_id}}</p>
                         
                     </div>
@@ -43,11 +44,27 @@
         data() {
             return {
                 'adult' : 1,
+                'participants': [
+                    {
+                        'gender' : 'mr', 
+                        'name' : 'name', 
+                    },
+                ]
+            }
+        },
+
+        computed: {
+            partCounts: function () {
+                return this.participants.length;
             }
         },
 
         mounted() {
             console.log('Component mounted.')
+        },
+
+        methods: {
+            changeAdultCount
         }
     }
 </script>
