@@ -1,19 +1,20 @@
 <?php
 
+/* Front Side */
 Route::group(['namespace' => 'Front'], function (){
     Route::get('/', 'FrontController@home')->name('home');
     Route::get('category/{category}', 'CategoryController@show')->name('category');
     Route::get('tour/{tour}', 'TourController@show')->name('tour');
 
-    Route::get('reservation/{date}', 'TourController@reservationShow')->name('reservation.show');
+    Route::get('reservation_step1/{date}', 'TourController@reservationStep1')->name('reservation.show');
+    Route::get('reservation_step2/{date}/{adult}', 'TourController@reservationStep2')->name('reservation.step2.show');
 });
 
-    Route::get('loginform', function () {})->name('auth.loginform');
-    Route::get('register', function () {})->name('auth.register');
+/* Login - Register */
+Route::get('loginform', function () {})->name('auth.loginform');
+Route::get('register', function () {})->name('auth.register');
 
-
-
-
+/* Admin Side */
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Middleware: admin eklenecek */
 
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
