@@ -63,8 +63,5 @@
             console.log('Component mounted.')
         },
 
-        methods: {
-            changeAdultCount
-        }
     }
 </script>
