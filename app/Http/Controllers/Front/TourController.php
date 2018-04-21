@@ -12,16 +12,34 @@ class TourController extends Controller
 {
     public function show(Tour $tour)
     {
-        // return 'tour-detail ' . request('tour');
+        $show = 'tour';
         return view('front.tour', compact('tour'));
     }
 
-    public function reservationShow(Date $date)
+    public function reservationStep1(Date $date)
     {
         $tour = $date->tour;
         if((!$tour) or ($tour->status !== 1)){
             return 'tour not found.'; 
         }
-        return view('front.reservation_show', compact('tour', 'date'));
+        return view('front.reservation_step1', compact('tour', 'date'));
+    }
+
+    public function reservationStep2(Date $date, $adult)
+    {
+        $adult = intval($adult);
+        if($adult > 5){
+            abort(404);
+        }
+
+        $tour = $date->tour;
+        if((!$tour) or ($tour->status !== 1)){
+            return 'tour not found.'; 
+        }
+
+        $total_price = $date->price * $adult;
+        $currency = $date->currency;
+        
+        return view('front.reservation_step2', compact('tour', 'date', 'total_price', 'currency'));
     }
 }
