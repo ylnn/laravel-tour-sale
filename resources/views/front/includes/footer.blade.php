@@ -12,6 +12,7 @@
     <script src="{{asset('js/lightslider.min.js')}}"></script>
     <script src="{{asset('css/summernote/summernote-bs4.js')}}"></script>
     {{--  <script src="{{asset('css/summernote/summernote.css')}}"></script>  --}}
+    @stack('footer_js')
     <script >
         Holder.addTheme('thumb', {
         bg: '#55595c',
@@ -20,35 +21,5 @@
       });
     </script>
     
-    <script type="text/javascript">
-/*         $(document).ready(function() { 
-            $('#summernote').summernote({
-                minHeight: 300,
-                toolbar: [
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']]
-            ],
-            });
-
-            $("#lightSlider").lightSlider({
-                gallery:true,
-                item:1,
-                loop:true,
-                thumbItem:9,
-                slideMargin:0,
-                enableDrag: false,
-                currentPagerPosition:'left',
-                onSliderLoad: function(el) {
-                    el.lightGallery({
-                        selector: '#lightSlider .lslide'
-                    });
-                }   
-            }); 
-        }); */
-    </script>
-
 </body>
 </html>
