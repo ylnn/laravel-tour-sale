@@ -29,7 +29,7 @@ class TourController extends Controller
     {
         $adult = intval($adult);
         if($adult > 5){
-            abort(404);
+            return response('too much participants');
         }
 
         $tour = $date->tour;
@@ -40,6 +40,6 @@ class TourController extends Controller
         $total_price = $date->price * $adult;
         $currency = $date->currency;
         
-        return view('front.reservation_step2', compact('tour', 'date', 'total_price', 'currency'));
+        return view('front.reservation_step2', compact('tour', 'date', 'adult', 'total_price', 'currency'));
     }
 }
