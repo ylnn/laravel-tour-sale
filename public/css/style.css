@@ -9,6 +9,17 @@
     margin-bottom: 10px;
 }
 
+.homepage_tour_div {
+
+    border: 1px solid rgb(230, 230, 230);
+    padding: 20px;
+    /* margin-bottom: 10px; */
+    width: 370px;
+    height: 280px;
+    margin-left: -1px;
+    margin-top: -1px;
+}
+
 .popularTours {
     display: block;
     min-height: 300px;
@@ -31,4 +42,5 @@
 .tour_main_header {
     font-size: 18px;
     font-weight: bold;
+    max-width: 100%;
 }
