@@ -21,15 +21,4 @@ class HomepageTest extends TestCase
         $response->assertSee('TourSale');
     }
 
-    public function testTourpage()
-    {
-        $response = $this->get('/tour/1');
-        $response->assertStatus(200);
-    }
-
-    public function testReservationStep2()
-    {
-        $response = $this->get('/reservation_step2/1/4');
-        $response->assertStatus(200);
-    }
 }
