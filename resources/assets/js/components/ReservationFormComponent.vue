@@ -8,23 +8,21 @@
 
                     <div class="card-body">
                         
-                        <div class="form-group">
-                            <label for="adult">Kişi sayısı</label>
-                            <select name="adult" id="adult" class="form-control" v-model.number="adult">
-                                <option value="1">1 Kişi</option>
-                                <option value="2">2 Kişi</option>
-                                <option value="3">3 Kişi</option>
-                                <option value="4">4 Kişi</option>
-                                <option value="5">5 Kişi</option>
-                            </select>
-                        </div>
-
-                        <hr>
                         <h2>Katılımcılar:</h2>
 
                         <div class="form-group" v-for="(item, index) in participants" v-bind:key="index">
-                            <label for="p1">Katılımcı </label>
-                            <input type="text" class="form-control" name="p1" v-model="participants[index].name">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <select name="gender" id="gender" class="form-control">
+                                        <option value="mr">Mr.</option>
+                                        <option value="mrs">Mrs.</option>
+                                        <option value="miss">Ms.</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name="p1" v-model="participants[index].name">
+                                </div>
+                            </div>
                         </div>
                         <p>Katılımcı sayısı {{partCounts}}</p>
                         <p>Date ID: {{date_id}}</p>
@@ -39,7 +37,7 @@
 <script>
     export default {
 
-        props : ['date_id'],
+        props : ['date_id', 'adult'],
 
         data() {
             return {
