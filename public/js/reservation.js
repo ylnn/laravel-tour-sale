@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 48);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -13274,12 +13274,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-    props: ['date_id'],
+    props: ['date_id', 'adult'],
 
     data: function data() {
         return {
@@ -13325,88 +13323,41 @@ var render = function() {
             "div",
             { staticClass: "card-body" },
             [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "adult" } }, [
-                  _vm._v("Kişi sayısı")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model.number",
-                        value: _vm.adult,
-                        expression: "adult",
-                        modifiers: { number: true }
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { name: "adult", id: "adult" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return _vm._n(val)
-                          })
-                        _vm.adult = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "1" } }, [_vm._v("1 Kişi")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "2" } }, [_vm._v("2 Kişi")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "3" } }, [_vm._v("3 Kişi")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "4" } }, [_vm._v("4 Kişi")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "5" } }, [_vm._v("5 Kişi")])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("hr"),
-              _vm._v(" "),
               _c("h2", [_vm._v("Katılımcılar:")]),
               _vm._v(" "),
               _vm._l(_vm.participants, function(item, index) {
                 return _c("div", { key: index, staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "p1" } }, [_vm._v("Katılımcı ")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.participants[index].name,
-                        expression: "participants[index].name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", name: "p1" },
-                    domProps: { value: _vm.participants[index].name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c("div", { staticClass: "row" }, [
+                    _vm._m(0, true),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.participants[index].name,
+                            expression: "participants[index].name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "p1" },
+                        domProps: { value: _vm.participants[index].name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.participants[index],
+                              "name",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.participants[index],
-                          "name",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
+                      })
+                    ])
+                  ])
                 ])
               }),
               _vm._v(" "),
@@ -13421,7 +13372,29 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c(
+        "select",
+        {
+          staticClass: "form-control",
+          attrs: { name: "gender", id: "gender" }
+        },
+        [
+          _c("option", { attrs: { value: "mr" } }, [_vm._v("Mr.")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "mrs" } }, [_vm._v("Mrs.")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "miss" } }, [_vm._v("Ms.")])
+        ]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -13440,14 +13413,19 @@ if (false) {
 /* 40 */,
 /* 41 */,
 /* 42 */,
-/* 43 */
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(44);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
-/* 44 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 window.Vue = __webpack_require__(10);
