@@ -12,7 +12,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PhotoController extends Controller
 {
-    public $photoSizes = ['width' => 700, 'height' => 400]; // width, height
+    public $photoSizes = ['width' => 700, 'height' => 500]; // width, height
     public $thumbSizes = ['width' => 325, 'height' => 200]; // width, height
 
     protected $mainFolder = 'public/';
