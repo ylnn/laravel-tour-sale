@@ -10,7 +10,7 @@ Route::group(['namespace' => 'Front'], function (){
     Route::get('reservation_step1/{date}', 'TourController@reservationStep1')->name('reservation.show');
     Route::get('reservation_step2/{date}/{adult}', 'TourController@reservationStep2')->name('reservation.step2.show');
 
-    Route::post('post', 'TourController@post');
+    Route::post('res_post', 'TourController@post');
 });
 
 /* Login - Register */

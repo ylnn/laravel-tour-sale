@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Category;
 use App\Tour;
 use App\Date;
+use Validator;
 
 class TourController extends Controller
 {
@@ -41,6 +42,37 @@ class TourController extends Controller
         $currency = $date->currency;
         
         return view('front.reservation_step2', compact('tour', 'date', 'adult', 'total_price', 'currency'));
+    }
+
+    public function post(Request $request)
+    {
+/*         $this->validate($request, [
+            "name" => "string|required",
+            "email" => "string|required",
+            "address" => "string|required",
+            "adult" => "string|required",
+            "gender" => "string|required",
+            "participant" => "string|required",
+        ]); */
+
+
+        $validator = Validator::make($request->all(), [
+            "name" => "string|required",
+            "email" => "required|email",
+            "address" => "string|required",
+            "adult" => "integer|required",
+            "gender.*" => "string|required",
+            "participant.*" => "string",
+        ]);
+
+        if($validator->fails()){
+            return $validator->errors();
+        } else {
+            return 'ok';
+        }
+
+        // dd($request->all());   
+        return "OK";
     }
 
 }
