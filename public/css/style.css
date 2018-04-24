@@ -22,3 +22,13 @@
 .popularTours li {
     float: left;
 }
+
+.res-form-header {
+    margin-bottom: 30px;
+    border-bottom: 5px solid rgb(77, 77, 77);
+}
+
+.tour_main_header {
+    font-size: 18px;
+    font-weight: bold;
+}
