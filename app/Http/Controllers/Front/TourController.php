@@ -13,7 +13,7 @@ class TourController extends Controller
     public function show(Tour $tour)
     {
         $show = 'tour';
-        return view('front.tour', compact('tour'));
+        return view('front.tour_detail', compact('tour'));
     }
 
     public function reservationStep1(Date $date)
@@ -25,7 +25,7 @@ class TourController extends Controller
         return view('front.reservation_step1', compact('tour', 'date'));
     }
 
-    public function reservationStep2(Date $date, $adult)
+    public function reservationStep2(Request $request, Date $date, $adult)
     {
         $adult = intval($adult);
         if($adult > 5){
@@ -42,4 +42,5 @@ class TourController extends Controller
         
         return view('front.reservation_step2', compact('tour', 'date', 'adult', 'total_price', 'currency'));
     }
+
 }
