@@ -30,7 +30,7 @@
         <div class="card card-default">
             <div class="card-body">
                 
-                <form method="POST" action="{{url('post')}}">
+                <form method="POST" action="{{url('res_post')}}">
 
                 <h3 class="res-form-header">İletişim Bilgileri</h3>
                 <div class="form-group">
@@ -75,6 +75,8 @@
                             <button type="submit" class="btn btn-primary btn-lg">Gönder</button>
                         </div>
                     </div>
+
+                    <input type="hidden" name="adult" value="{{$adult}}">
                 </form>
             </div>
         </div>
