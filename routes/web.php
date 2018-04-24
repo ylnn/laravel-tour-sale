@@ -1,13 +1,16 @@
 <?php
 
+
 /* Front Side */
 Route::group(['namespace' => 'Front'], function (){
     Route::get('/', 'FrontController@home')->name('home');
     Route::get('category/{category}', 'CategoryController@show')->name('category');
-    Route::get('tour/{tour}', 'TourController@show')->name('tour');
-
+    Route::get('tour_detail/{tour}', 'TourController@show')->name('tour');
+    
     Route::get('reservation_step1/{date}', 'TourController@reservationStep1')->name('reservation.show');
     Route::get('reservation_step2/{date}/{adult}', 'TourController@reservationStep2')->name('reservation.step2.show');
+
+    Route::post('post', 'TourController@post');
 });
 
 /* Login - Register */
