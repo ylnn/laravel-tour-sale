@@ -18,6 +18,7 @@
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('admin.dashboard') }}">TourSale</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
+                <a class="nav-link" href="{{route('home')}}">Siteyi Göster</a>
                 <a class="nav-link" href="#">Çıkış yap</a>
             </li>
         </ul>
