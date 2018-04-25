@@ -28,19 +28,19 @@ class FrontTourTest extends TestCase
             "name" => "Yalın Çobanoğlu",
             "email"  => "yalin@yalin.com",
             "address"  => "Antalya TÜRKİYE",
-            "adult"  => 1,
+            "pax_count"  => 1,
             "gender" => [
                 'mr'
             ],
-            "participant" => [
+            "pax" => [
                 "Yalın Cobanoğlu"
-            ]
+            ],
+            "date_id" => 3
         );
 
-        $response = $this->json('POST', 'res_post', $post_array);
+        $response = $this->json('POST', 'reservation_post', $post_array);
        
         $response->assertStatus(200);
-        $response->assertSessionHasErrors();
         
     }
 }
