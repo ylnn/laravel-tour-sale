@@ -8,6 +8,8 @@ use App\Category;
 use App\Tour;
 use App\Date;
 use Validator;
+use App\Reservation;
+use App\User;
 
 class TourController extends Controller
 {
@@ -44,35 +46,48 @@ class TourController extends Controller
         return view('front.reservation_step2', compact('tour', 'date', 'adult', 'total_price', 'currency'));
     }
 
-    public function post(Request $request)
+    public function reservationPost(Request $request)
     {
-/*         $this->validate($request, [
-            "name" => "string|required",
-            "email" => "string|required",
-            "address" => "string|required",
-            "adult" => "string|required",
-            "gender" => "string|required",
-            "participant" => "string|required",
-        ]); */
-
 
         $validator = Validator::make($request->all(), [
             "name" => "string|required",
             "email" => "required|email",
             "address" => "string|required",
-            "adult" => "integer|required",
+            "pax_count" => "integer|required",
             "gender.*" => "string|required",
-            "participant.*" => "string",
+            "pax.*" => "string",
         ]);
 
         if($validator->fails()){
             return $validator->errors();
-        } else {
-            return 'ok';
+        } 
+
+    
+        if((int)$request->pax_count !== count($request->pax)){
+            return response()->json('pax count error', 400);
         }
 
+
+        $date = $this->getDateWithId($request->date_id);
+
+        $reservation = new Reservation();
+        $reservation->reservation_id = str_random(70);
+        $reservation->date_id = $date->id;
+        $reservation->tour_id = $date->tour_id;
+
+
         // dd($request->all());   
-        return "OK";
+    }
+
+
+    protected function getDateWithId($id)
+    {
+        return Date::findOrFail($id);   
+    }
+
+    protected function createUser($name, $email, $address)
+    {
+        $user = new User();   
     }
 
 }
