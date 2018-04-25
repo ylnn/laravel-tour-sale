@@ -30,7 +30,7 @@
         <div class="card card-default">
             <div class="card-body">
                 
-                <form method="POST" action="{{url('res_post')}}">
+                <form method="POST" action="{{url('reservation_post')}}">
 
                 <h3 class="res-form-header">İletişim Bilgileri</h3>
                 <div class="form-group">
@@ -64,7 +64,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-5">
-                                    <input type="text" name="participant[{{$i}}]" id="participant{{$i}}" class="form-control" placeholder="Ad Soyad" aria-describedby="helpId">
+                                    <input type="text" name="pax[{{$i}}]" id="pax{{$i}}" class="form-control" placeholder="Ad Soyad" aria-describedby="helpId">
                                 </div>
                             </div>
                             
@@ -76,7 +76,8 @@
                         </div>
                     </div>
 
-                    <input type="hidden" name="adult" value="{{$adult}}">
+                    <input type="hidden" name="pax_count" value="{{$adult}}">
+                    <input type="hidden" name="date_id" value="{{$date->id}}">
                 </form>
             </div>
         </div>
