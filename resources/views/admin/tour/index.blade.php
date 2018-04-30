@@ -21,6 +21,7 @@
               <th>@lang('admin.isim')</th>
               <th>@lang('admin.tarihler')</th>
               <th>@lang('admin.kategori')</th>
+              <th>@lang('admin.fotograflar')</th>
               <th>@lang('admin.guncelleme')</th>
               <th width="200" class="text-right">@lang('admin.islemler')</th>
 
@@ -43,6 +44,12 @@
                       <a href="{{ route('admin.date.index', [$record->id]) }}" class="btn btn-info btn-sm">@lang('admin.tarihler') ({{ $record->dates_count }})</a>
                   </td>
                   <td>{{$record->category->name ?? '...'}}</td>
+                <td>
+                  @php
+                    $count = $record->photos->count()
+                  @endphp
+                  
+                  @if($count == 0 ) <b>No Photo</b> @else {{$count}} @endif </td>
                   <td>{{$record->updated_at->format('d.m.y')}}</td>
                   <td class="text-right">
                     <a href="{{ route($baseRoute . '.show', [$record->id]) }} " class="btn btn-primary btn-sm">@lang('admin.goster')</a>
