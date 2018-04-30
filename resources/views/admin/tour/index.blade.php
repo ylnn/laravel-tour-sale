@@ -44,12 +44,12 @@
                       <a href="{{ route('admin.date.index', [$record->id]) }}" class="btn btn-info btn-sm">@lang('admin.tarihler') ({{ $record->dates_count }})</a>
                   </td>
                   <td>{{$record->category->name ?? '...'}}</td>
-                <td>
+                <td class="text-center">
                   @php
                     $count = $record->photos->count()
                   @endphp
                   
-                  @if($count == 0 ) <b>No Photo</b> @else {{$count}} @endif </td>
+                  @if($count == 0 ) <b>@lang('admin.fotograf-yok')</b> @else {{$count}} @endif </td>
                   <td>{{$record->updated_at->format('d.m.y')}}</td>
                   <td class="text-right">
                     <a href="{{ route($baseRoute . '.show', [$record->id]) }} " class="btn btn-primary btn-sm">@lang('admin.goster')</a>

@@ -24,6 +24,7 @@ return [
     'bosolabilir' => 'Boş bırakılabilir',
     'taslak' => 'Taslak',
     'fotograflar' => 'Fotoğraflar',
+    'fotograf-yok' => 'Fotoğraf Yok',
 
     /* Kategori */
     'kategori' => 'Kategori',
