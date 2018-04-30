@@ -104,7 +104,7 @@
     <script src="{{asset('js/holder.min.js')}}"></script>
     <script src="{{asset('css/summernote/summernote-bs4.js')}}"></script>
     <script src="{{asset('js/app.js')}}"></script>
-
+    <script src="{{asset('js/popper.min.js')}}"></script>
 
     <script>
         $(document).ready(function() {
@@ -114,6 +114,9 @@
             $('#summernote-short').summernote({
                 height: 100
             });
+            // enable popovers
+            $(function () { $('[data-toggle="popover"]').popover() })
+            // enable popovers
         });
     </script>
 
