@@ -40,8 +40,19 @@
                         <span class="badge badge-warning">@lang('admin.taslak')</span>   
                       @endif</td>
                   <td>{{$record->name}}</td>
-                  <td>
-                      <a href="{{ route('admin.date.index', [$record->id]) }}" class="btn btn-info btn-sm">@lang('admin.tarihler') ({{ $record->dates_count }})</a>
+                  <td class="text-center">
+                      <button class="btn btn-info btn-sm" data-toggle="popover" data-placement="top" data-html="true" 
+                    data-content="
+                    @isset($record->dates)
+                      @foreach ($record->dates as $item)
+                          {{$item->start_date->format('d.m.Y')}} - {{$item->end_date->format('d.m.Y')}} <br />
+                      @endforeach
+                    @endif
+                  
+                    ">
+                        {{ $record->dates_count }} 
+                      </button>
+                      <a href="{{ route('admin.date.index', [$record->id]) }}" class="btn btn-warning btn-sm">@lang('admin.duzenle')</a>
                   </td>
                   <td>{{$record->category->name ?? '...'}}</td>
                 <td class="text-center">
