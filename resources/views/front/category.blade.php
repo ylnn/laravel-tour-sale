@@ -8,7 +8,7 @@
             @foreach ($tours as $tour) @php $tourDetailLink = route('tour', [$tour->id]) @endphp
             <li class="border">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <img src="holder.js/170x120">
                     </div>
                     <div class="col">
