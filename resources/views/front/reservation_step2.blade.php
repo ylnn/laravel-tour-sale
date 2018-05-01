@@ -1,10 +1,5 @@
-@extends('layout.front') 
-
-@push('footer_js')
-    {{-- <script src="{{asset('js/reservation.js')}}"></script> --}}
-@endpush
-
-@section('content')
+@extends('layout.front') @push('footer_js') {{--
+<script src="{{asset('js/reservation.js')}}"></script> --}} @endpush @section('content')
 
 <div class="row justify-content-center">
     <div class="col-8">
@@ -18,72 +13,94 @@
                 <th>@lang('frontLang.kisi-sayisi')</th>
                 <th>@lang('frontLang.toplam-fiyat')</th>
             </thead>
-                <tr>
-                    <td>{{$date->start_date->format('d/m/Y')}}</td>
-                    <td>{{$date->end_date->format('d/m/Y')}}</td>
-                    <td>{{ $date->currency }} {{$date->price}}</td>
-                    <td>{{$adult}}</td>
-                    <td>{{$currency}} {{$total_price}}</td>
-                </tr>
+            <tr>
+                <td>{{$date->start_date->format('d/m/Y')}}</td>
+                <td>{{$date->end_date->format('d/m/Y')}}</td>
+                <td>{{ $date->currency }} {{$date->price}}</td>
+                <td>{{$adult}}</td>
+                <td>{{$currency}} {{$total_price}}</td>
+            </tr>
         </table>
 
         <div class="card card-default">
             <div class="card-body">
-                
+
                 <form method="POST" action="{{url('reservation_post')}}">
 
-                <h3 class="res-form-header">İletişim Bilgileri</h3>
-                <div class="form-group">
-                  <label for="">Ad Soyad:</label>
-                  <input type="text" name="name" id="name" class="form-control" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="">E-posta Adresi:</label>
-                  <input type="text" name="email" id="email" class="form-control" placeholder="">
-                </div>
-
-                <div class="form-group">
-                  <label for="address">Adres:</label>
-                  <textarea class="form-control" name="address" id="address" rows="3"></textarea>
-                </div>
-
-                <div style="margin-bottom:50px"></div>
-
-                <h3 class="res-form-header">Katılımcı Bilgileri</h4>
-                <br>
-                    {{ csrf_field() }}
-                    @for ($i = 0; $i < $adult; $i++)
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-2"><label for="">Katılımcı:</label></div>
-                                <div class="col-md-3">
-                                    <select name="gender[{{$i}}]" id="gender{{$i}}" class="form-control">
-                                        <option value="mr">Mr.</option>
-                                        <option value="mrs">Mrs.</option>
-                                        <option value="miss">Ms.</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-5">
-                                    <input type="text" name="pax[{{$i}}]" id="pax{{$i}}" class="form-control" placeholder="Ad Soyad" aria-describedby="helpId">
-                                </div>
+                    <h3 class="res-form-header">İletişim Bilgileri</h3>
+                    <div class="form-group">
+                        <label for="">Ad Soyad</label>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" name="name" id="name" class="form-control" placeholder="" autofocus>
                             </div>
-                            
                         </div>
-                    @endfor
-                    <div class="row">
-                        <div class="col align-self-end">
-                            <button type="submit" class="btn btn-primary btn-lg">Gönder</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="">E-posta Adresi</label>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" name="email" id="email" class="form-control" placeholder="">
+                            </div>
                         </div>
                     </div>
 
-                    <input type="hidden" name="pax_count" value="{{$adult}}">
-                    <input type="hidden" name="date_id" value="{{$date->id}}">
-                </form>
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label for="address">Adres</label>
+                        <div class="row">
+                            <div class="col-6">
+                                <textarea class="form-control" name="address" id="address" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
 
-        
+                    <div style="margin-bottom:50px"></div>
+
+                    <h3 class="res-form-header">Katılımcı Bilgileri</h4>
+
+                        {{ csrf_field() }} @for ($i = 0; $i
+                        < $adult; $i++) <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
+                                <div class="form-group">
+                                    <label for="">Gender</label>
+                                    <br>
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-info active">
+                                            <input type="radio" name="pax[{{$i}}][gender]" id="option1" value="mr" autocomplete="off" checked> Mr
+                                        </label>
+                                        <label class="btn btn-info">
+                                            <input type="radio" name="pax[{{$i}}][gender]" id="option2" value="mrs" autocomplete="off"> Mrs
+                                        </label>
+                                        <label class="btn btn-info">
+                                            <input type="radio" name="pax[{{$i}}][gender]" id="option3" value="miss" autocomplete="off"> Miss
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-md-5 col-sm-12">
+                                <div class="form-group">
+                                    <label for="">Name</label>
+                                    <input type="text" name="pax[{{$i}}][name]" id="pax{{$i}}" class="form-control" aria-describedby="helpId">
+                                </div>
+
+                            </div>
+            </div>
+            <hr> @endfor
+            <div class="row">
+                <div class="col align-self-end">
+                    <button type="submit" class="btn btn-success btn-lg">Rezervasyonu Tamamla</button>
+                </div>
+            </div>
+
+            <input type="hidden" name="pax_count" value="{{$adult}}">
+            <input type="hidden" name="date_id" value="{{$date->id}}">
+            </form>
+        </div>
     </div>
+
+
+</div>
 </div>
 
 
