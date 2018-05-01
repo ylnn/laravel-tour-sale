@@ -28,13 +28,11 @@ class FrontTourTest extends TestCase
             "name" => "Yalın Çobanoğlu",
             "email"  => "yalin@yalin.com",
             "address"  => "Antalya TÜRKİYE",
-            "pax_count"  => 1,
-            "gender" => [
-                'mr'
-            ],
             "pax" => [
-                "Yalın Cobanoğlu"
+                "gender" => "mr",
+                "name" => "Yalın Cobanoğlu"
             ],
+            "pax_count"  => 1,
             "date_id" => 3
         );
 
