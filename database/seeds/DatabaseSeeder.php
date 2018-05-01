@@ -15,5 +15,9 @@ class DatabaseSeeder extends Seeder
         $this->call('CategoriesTableSeeder');
         $this->call('ToursTableSeeder');
         $this->call('DateTableSeeder');
+        $this->call(ToursTableSeeder::class);
+        $this->call(PhotoTourTableSeeder::class);
+        $this->call(DatesTableSeeder::class);
+        $this->call(PhotosTableSeeder::class);
     }
 }
