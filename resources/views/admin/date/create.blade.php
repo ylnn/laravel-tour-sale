@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group">
                   <label for="min-participant">@lang('admin.min-katilimci')</label>
-                  <input type="number" name="min_participant" id="min_participant" class="form-control">
+                  <input type="number" name="min_pax" id="min_pax" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="max-participant">@lang('admin.max-katilimci')</label>
-                  <input type="number" name="max_participant" id="max_participant" class="form-control">
+                  <input type="number" name="max_pax" id="max_pax" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="currency">@lang('admin.para-birimi')</label>

@@ -20,8 +20,8 @@ class CreateDatesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->integer('min_participant')->default(0);
-            $table->integer('max_participant')->default(0);
+            $table->integer('min_pax')->default(0);
+            $table->integer('max_pax')->default(0);
             $table->integer('price');
             $table->string('currency');
             $table->timestamps();

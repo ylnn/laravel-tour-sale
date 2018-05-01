@@ -39,8 +39,8 @@ class DateController extends Controller
         $this->validate($request, [
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'min_participant' => 'required|integer',
-            'max_participant' => 'required|integer|min:'.(int)$request->min_participant,
+            'min_pax' => 'required|integer',
+            'max_pax' => 'required|integer|min:'.(int)$request->min_pax,
             'price' => 'required|integer',
             'currency' => 'required|in:TRY,USD,EUR',
         ]);
@@ -50,8 +50,8 @@ class DateController extends Controller
         $date->user_id = 1; // <<<< DEĞİŞECEK
         $date->start_date = $request->start_date;
         $date->end_date = $request->end_date;
-        $date->min_participant = $request->min_participant;
-        $date->max_participant = $request->max_participant;
+        $date->min_pax = $request->min_pax;
+        $date->max_pax = $request->max_pax;
         $date->price = $request->price;
         $date->currency = $request->currency;
 
@@ -71,14 +71,14 @@ class DateController extends Controller
     public function update(Date $date, Request $request)
     {
         $this->validate($request, [
-            'min_participant' => 'required|integer',
-            'max_participant' => 'required|integer|min:'.(int)$request->min_participant,
+            'min_pax' => 'required|integer',
+            'max_pax' => 'required|integer|min:'.(int)$request->min_pax,
             'price' => 'required|integer',
             'currency' => 'required|in:TRY,USD,EUR',
         ]);
 
-        $date->min_participant = $request->min_participant;
-        $date->max_participant = $request->max_participant;
+        $date->min_pax = $request->min_pax;
+        $date->max_pax = $request->max_pax;
         $date->price = $request->price;
         $date->currency = $request->currency;
 

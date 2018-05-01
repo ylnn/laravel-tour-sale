@@ -115,7 +115,7 @@ class TourController extends Controller
     protected function getDateAvailable(Date $date) : int
     {
         //maximum pax count
-        $maximum = $date->max_participant;
+        $maximum = $date->max_pax;
 
         //reservated pax count for this date
         $reservated_pax_count = $date->contacts->count();
