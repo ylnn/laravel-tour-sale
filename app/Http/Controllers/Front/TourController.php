@@ -10,6 +10,7 @@ use App\Date;
 use Validator;
 use App\Reservation;
 use App\User;
+use App\Contact;
 
 class TourController extends Controller
 {
@@ -49,20 +50,23 @@ class TourController extends Controller
     public function reservationPost(Request $request)
     {
 
+        // dd($request->all());
+
+        // return $request->all();
+
         $validator = Validator::make($request->all(), [
             "name" => "string|required",
             "email" => "required|email",
             "address" => "string|required",
             "pax_count" => "integer|required",
-            "gender.*" => "string|required",
-            "pax.*" => "string",
+            "pax.*.gender" => "string|required",
+            "pax.*.name" => "string",
         ]);
 
         if($validator->fails()){
             return $validator->errors();
         } 
 
-    
         if((int)$request->pax_count !== count($request->pax)){
             return response()->json('pax count error', 400);
         }
@@ -70,10 +74,28 @@ class TourController extends Controller
 
         $date = $this->getDateWithId($request->date_id);
 
-        $reservation = new Reservation();
+        $available = $this->getDateAvailable($date);
+
+        if($available < $request->pax_count){
+            return response()->json('not available', 400);
+        } 
+
+       $pax = collect($request->pax); 
+
+    //    dd($pax);
+       
+       $pax->each(function($item, $key){
+           $contact = new Contact();
+           $contact->date_id = $date->id;
+        });
+        
+        dd('ok devam!');
+        return $date;
+
+/*         $reservation = new Reservation();
         $reservation->reservation_id = str_random(70);
         $reservation->date_id = $date->id;
-        $reservation->tour_id = $date->tour_id;
+        $reservation->tour_id = $date->tour_id; */
 
 
         // dd($request->all());   
@@ -88,6 +110,20 @@ class TourController extends Controller
     protected function createUser($name, $email, $address)
     {
         $user = new User();   
+    }
+
+    protected function getDateAvailable(Date $date) : int
+    {
+        //maximum pax count
+        $maximum = $date->max_participant;
+
+        //reservated pax count for this date
+        $reservated_pax_count = $date->contacts->count();
+
+        //calculate available count
+        $available = $maximum - $reservated_pax_count;   
+
+        return $available;
     }
 
 }
