@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/laradock
 /.idea
 /.vscode
 /.vagrant
