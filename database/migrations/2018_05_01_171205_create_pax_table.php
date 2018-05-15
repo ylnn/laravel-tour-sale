@@ -16,6 +16,7 @@ class CreatePaxTable extends Migration
         Schema::create('pax', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('date_id');
+            $table->uuid('reservation_id');
             $table->string('name');
             $table->string('gender');
             $table->integer('age')->nullable();
