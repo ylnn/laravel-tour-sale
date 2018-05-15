@@ -14,8 +14,9 @@ class CreateReservationsTable extends Migration
     public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('reservation_id', 70)->unique();
+            // $table->increments('id');
+            $table->uuid('id')->primary();
+            // $table->string('reservation_id', 70)->unique();
             $table->unsignedInteger('date_id');
             $table->unsignedInteger('tour_id');
             $table->unsignedInteger('contact_id');
