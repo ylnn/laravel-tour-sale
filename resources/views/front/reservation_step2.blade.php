@@ -7,11 +7,11 @@
 
         <table class="table">
             <thead>
-                <th>@lang('frontLang.baslama-tarihi')</th>
-                <th>@lang('frontLang.bitis-tarihi')</th>
-                <th>@lang('frontLang.fiyat') (@lang('frontLang.kisi-basi'))</th>
-                <th>@lang('frontLang.kisi-sayisi')</th>
-                <th>@lang('frontLang.toplam-fiyat')</th>
+                <th>@lang('frontLang.start-date')</th>
+                <th>@lang('frontLang.finish-date')</th>
+                <th>@lang('frontLang.price') (@lang('frontLang.per-pax'))</th>
+                <th>@lang('frontLang.pax')</th>
+                <th>@lang('frontLang.total-price')</th>
             </thead>
             <tr>
                 <td>{{$date->start_date->format('d/m/Y')}}</td>

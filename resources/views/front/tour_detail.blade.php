@@ -11,11 +11,11 @@
         @isset($tour->dates)
         <table class="table">
             <thead>
-                <th>@lang('frontLang.baslama-tarihi')</th>
-                <th>@lang('frontLang.bitis-tarihi')</th>
-                <th>@lang('frontLang.fiyat')</th>
-                <th>@lang('frontLang.single-fiyat')</th>
-                <th>@lang('frontLang.islemler')</th>
+                <th>@lang('frontLang.start-date')</th>
+                <th>@lang('frontLang.finish-date')</th>
+                <th>@lang('frontLang.price')</th>
+                <th>@lang('frontLang.single-price')</th>
+                <th>@lang('frontLang.actions')</th>
             </thead>
             @foreach($tour->dates as $date)
             <tr>

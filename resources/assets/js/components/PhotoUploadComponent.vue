@@ -12,7 +12,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <button type="submit" class="btn btn-default">
-                            <i class="fa fa-upload"></i> {{lang.yukle}}</button>
+                            <i class="fa fa-upload"></i> {{lang.upload}}</button>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
         <hr />
 
         <button v-on:click="getir" class="btn btn-info btn-sm">
-            {{lang.yenile}}
+            {{lang.refresh}}
         </button>
 
         <ul class="vue-photo-list ">
@@ -96,11 +96,11 @@
 
                 if (length == 0) {
 
-                    this.setMessage(this.lang['once-fotograf-seciniz'])
+                    this.setMessage(this.lang['once-select-photo'])
 
                 } else {
 
-                    this.setMessage(this.lang['yukleniyor'])
+                    this.setMessage(this.lang['uploading'])
 
                 }
 
@@ -112,11 +112,11 @@
 
                     axios.post(this.url + this.upload_post_url, data)
                         .then(function (response) {
-                            this.setMessage(this.lang['yuklendi'])
+                            this.setMessage(this.lang['uploaded'])
                             this.getir();
                         }.bind(this))
                         .catch(function (error) {
-                            this.setMessage(this.lang['hata-olustu'])
+                            this.setMessage(this.lang['error-occurred'])
                         }.bind(this));
 
                 }

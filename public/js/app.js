@@ -13594,10 +13594,10 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[na
 
             if (length == 0) {
 
-                this.setMessage(this.lang['once-fotograf-seciniz']);
+                this.setMessage(this.lang['once-select-photo']);
             } else {
 
-                this.setMessage(this.lang['yukleniyor']);
+                this.setMessage(this.lang['uploading']);
             }
 
             var _iteratorNormalCompletion = true;
@@ -13614,10 +13614,10 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[na
                     data.set('photo', photo);
 
                     axios.post(this.url + this.upload_post_url, data).then(function (response) {
-                        this.setMessage(this.lang['yuklendi']);
+                        this.setMessage(this.lang['uploaded']);
                         this.getir();
                     }.bind(this)).catch(function (error) {
-                        this.setMessage(this.lang['hata-olustu']);
+                        this.setMessage(this.lang['error-occurred']);
                     }.bind(this));
                 }
 
@@ -15729,7 +15729,7 @@ var render = function() {
     _c(
       "button",
       { staticClass: "btn btn-info btn-sm", on: { click: _vm.getir } },
-      [_vm._v("\n        " + _vm._s(_vm.lang.yenile) + "\n    ")]
+      [_vm._v("\n        " + _vm._s(_vm.lang.refresh) + "\n    ")]
     ),
     _vm._v(" "),
     _c(

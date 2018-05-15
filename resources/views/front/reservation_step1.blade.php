@@ -12,9 +12,9 @@
 
         <table class="table">
             <thead>
-                <th>@lang('frontLang.baslama-tarihi')</th>
-                <th>@lang('frontLang.bitis-tarihi')</th>
-                <th>@lang('frontLang.fiyat') (@lang('frontLang.kisi-basi'))</th>
+                <th>@lang('frontLang.start-date')</th>
+                <th>@lang('frontLang.finish-date')</th>
+                <th>@lang('frontLang.price') (@lang('frontLang.per-pax'))</th>
             </thead>
                 <tr>
                     <td>{{$date->start_date->format('d/m/Y')}}</td>
