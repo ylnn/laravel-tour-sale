@@ -37,6 +37,14 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="">Telefon</label>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" name="phone" id="phone" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="">E-posta Adresi</label>
                         <div class="row">
                             <div class="col-6">
