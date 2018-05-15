@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 class="h2">@lang('admin.tours')</h1>
+      <h1 class="h2">@lang('adminLang.tours')</h1>
       <div class="btn-toolbar mb-2 mb-md-0">
         
         <div class="btn-group mr-2">
-        <a href="{{ route('admin.tour.create') }}" class="btn btn-sm btn-outline-secondary">+ @lang('admin.new')</a>
+        <a href="{{ route('admin.tour.create') }}" class="btn btn-sm btn-outline-secondary">+ @lang('adminLang.new')</a>
         </div>
       </div>
     </div>
@@ -17,13 +17,13 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>@lang('admin.status')</th>
-              <th>@lang('admin.name')</th>
-              <th>@lang('admin.dates')</th>
-              <th>@lang('admin.category')</th>
-              <th>@lang('admin.photos')</th>
-              <th>@lang('admin.update')</th>
-              <th width="200" class="text-right">@lang('admin.actions')</th>
+              <th>@lang('adminLang.status')</th>
+              <th>@lang('adminLang.name')</th>
+              <th>@lang('adminLang.dates')</th>
+              <th>@lang('adminLang.category')</th>
+              <th>@lang('adminLang.photos')</th>
+              <th>@lang('adminLang.update')</th>
+              <th width="200" class="text-right">@lang('adminLang.actions')</th>
 
             </tr>
           </thead>
@@ -33,11 +33,11 @@
                 <tr>
                   <td>{{$record->id}}</td>
                   <td>@if($record->status == 1) 
-                        <span class="badge badge-success">@lang('admin.published')</span>
+                        <span class="badge badge-success">@lang('adminLang.published')</span>
                       @elseif($record->status == 0) 
-                        <span class="badge badge-danger">@lang('admin.unpublished')</span>
+                        <span class="badge badge-danger">@lang('adminLang.unpublished')</span>
                       @elseif($record->status == 2) 
-                        <span class="badge badge-warning">@lang('admin.draft')</span>   
+                        <span class="badge badge-warning">@lang('adminLang.draft')</span>   
                       @endif</td>
                   <td>{{$record->name}}</td>
                   <td class="text-center">
@@ -52,7 +52,7 @@
                     ">
                         {{ $record->dates_count }} 
                       </button>
-                      <a href="{{ route('admin.date.index', [$record->id]) }}" class="btn btn-warning btn-sm">@lang('admin.edit')</a>
+                      <a href="{{ route('admin.date.index', [$record->id]) }}" class="btn btn-warning btn-sm">@lang('adminLang.edit')</a>
                   </td>
                   <td>{{$record->category->name ?? '...'}}</td>
                 <td class="text-center">
@@ -60,12 +60,12 @@
                     $count = $record->photos->count()
                   @endphp
                   
-                  @if($count == 0 ) <b>@lang('admin.no-photos')</b> @else {{$count}} @endif </td>
+                  @if($count == 0 ) <b>@lang('adminLang.no-photos')</b> @else {{$count}} @endif </td>
                   <td>{{$record->updated_at->format('d.m.y')}}</td>
                   <td class="text-right">
-                    <a href="{{ route($baseRoute . '.show', [$record->id]) }} " class="btn btn-primary btn-sm">@lang('admin.show')</a>
-                    <a href="{{ route($baseRoute . '.edit', [$record->id]) }} " class="btn btn-warning btn-sm">@lang('admin.edit')</a>
-                    <a href="{{ route($baseRoute . '.delete', [$record->id]) }} " class="btn btn-danger btn-sm">@lang('admin.delete')</a>
+                    <a href="{{ route($baseRoute . '.show', [$record->id]) }} " class="btn btn-primary btn-sm">@lang('adminLang.show')</a>
+                    <a href="{{ route($baseRoute . '.edit', [$record->id]) }} " class="btn btn-warning btn-sm">@lang('adminLang.edit')</a>
+                    <a href="{{ route($baseRoute . '.delete', [$record->id]) }} " class="btn btn-danger btn-sm">@lang('adminLang.delete')</a>
                   </td>
                 </tr>
               @endforeach
@@ -74,8 +74,8 @@
         </table>
 
         @if(count($records) == 0)
-        <p>@lang('admin.not-found')</p>
-        <a name="" id="" class="btn btn-success btn-sm" href="{{ route( $baseRoute . '.create') }}" role="button">@lang('admin.new')</a>
+        <p>@lang('adminLang.not-found')</p>
+        <a name="" id="" class="btn btn-success btn-sm" href="{{ route( $baseRoute . '.create') }}" role="button">@lang('adminLang.new')</a>
         @endif
       </div>
 @endsection
