@@ -47,6 +47,14 @@ return [
     'per-pax' => 'Per Pax',
     'pax' => 'Pax',
     'continue' => 'Continue',
+    'contact-information' => 'Contact Information',
+    'name-surname' => 'Full name',
+    'phone' => 'Phone',
+    'email' => 'E-mail',
+    'address' => 'Address',
+    'pax-information' => 'Pax Information',
+    'gender' => 'Gender',
+    'complete-res' => 'Complete Reservation',
 
     /* Dates */
     'dates' => 'Dates',

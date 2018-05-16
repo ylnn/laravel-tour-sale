@@ -27,9 +27,9 @@
 
                 <form method="POST" action="{{url('reservation_post')}}">
 
-                    <h3 class="res-form-header">İletişim Bilgileri</h3>
+                    <h3 class="res-form-header">@lang('frontLang.contact-information')</h3>
                     <div class="form-group">
-                        <label for="">Ad Soyad</label>
+                        <label for="">@lang('frontLang.name-surname')</label>
                         <div class="row">
                             <div class="col-6">
                                 <input type="text" name="name" id="name" class="form-control" placeholder="" autofocus>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Telefon</label>
+                        <label for="">@lang('frontLang.phone')</label>
                         <div class="row">
                             <div class="col-6">
                                 <input type="text" name="phone" id="phone" class="form-control" placeholder="">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">E-posta Adresi</label>
+                        <label for="">@lang('frontLang.email')</label>
                         <div class="row">
                             <div class="col-6">
                                 <input type="text" name="email" id="email" class="form-control" placeholder="">
@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="address">Adres</label>
+                        <label for="address">@lang('frontLang.address')</label>
                         <div class="row">
                             <div class="col-6">
                                 <textarea class="form-control" name="address" id="address" rows="3"></textarea>
@@ -64,13 +64,13 @@
 
                     <div style="margin-bottom:50px"></div>
 
-                    <h3 class="res-form-header">Katılımcı Bilgileri</h4>
+                    <h3 class="res-form-header">@lang('frontLang.pax-information')</h3>
 
                         {{ csrf_field() }} @for ($i = 0; $i
                         < $adult; $i++) <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-12">
                                 <div class="form-group">
-                                    <label for="">Gender</label>
+                                    <label for="">@lang('frontLang.gender')</label>
                                     <br>
                                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                         <label class="btn btn-info active">
@@ -88,7 +88,7 @@
 
                             <div class="col-lg-5 col-md-5 col-sm-12">
                                 <div class="form-group">
-                                    <label for="">Name</label>
+                                    <label for="">@lang('frontLang.name')</label>
                                     <input type="text" name="pax[{{$i}}][name]" id="pax{{$i}}" class="form-control" aria-describedby="helpId">
                                 </div>
 
@@ -97,7 +97,7 @@
             <hr> @endfor
             <div class="row">
                 <div class="col align-self-end">
-                    <button type="submit" class="btn btn-success btn-lg">Rezervasyonu Tamamla</button>
+                    <button type="submit" class="btn btn-success btn-lg">@lang('frontLang.complete-res')</button>
                 </div>
             </div>
 
