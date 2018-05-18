@@ -26,8 +26,8 @@ class TourController extends Controller
     public function reservationStep1(Date $date)
     {
         $tour = $date->tour;
-        if((!$tour) or ($tour->status !== 1)){
-            return 'tour not found.'; 
+        if ((!$tour) or ($tour->status !== 1)) {
+            return 'tour not found.';
         }
         return view('front.reservation_step1', compact('tour', 'date'));
     }
@@ -35,16 +35,16 @@ class TourController extends Controller
     public function reservationStep2(Request $request, Date $date, $adult)
     {
         $adult = intval($adult);
-        if($adult > 5){
+        if ($adult > 5) {
             return response('too much participants');
         }
 
         $tour = $date->tour;
-        if((!$tour) or ($tour->status !== 1)){
-            return 'tour not found.'; 
+        if ((!$tour) or ($tour->status !== 1)) {
+            return 'tour not found.';
         }
 
-        $total_price = $date->price * $adult;
+        $total_price = (int)$date->price * (int)$adult;
         $currency = $date->currency;
         
         return view('front.reservation_step2', compact('tour', 'date', 'adult', 'total_price', 'currency'));
@@ -52,11 +52,6 @@ class TourController extends Controller
 
     public function reservationPost(Request $request)
     {
-
-        // dd($request->all());
-
-        // return $request->all();
-
         $validator = Validator::make($request->all(), [
             "name" => "string|required",
             "email" => "required|email",
@@ -67,122 +62,98 @@ class TourController extends Controller
             "pax.*.name" => "string",
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return $validator->errors();
-        } 
+        }
 
-        if((int)$request->pax_count !== count($request->pax)){
+        if ((int)$request->pax_count !== count($request->pax)) {
             return response()->json('pax count error', 400);
         }
 
-
-        
         $date = $this->getDateWithId($request->date_id);
         
         // dd($date);
         
         $available = $this->getDateAvailable($date);
  
-        if($available < (int)$request->pax_count){
+        if ($available < (int)$request->pax_count) {
             return response()->json('not available', 400);
-        } 
+        }
 
         
         
         //TRANSACTION START
-        
-        DB::transaction(function () use ($date, $request) {
+        $reservation_id = DB::transaction(function () use ($date, $request) {
             
             $pax = collect($request->pax);
-       // Create Contact
 
-       $contact = new Contact();
-       $contact->date_id = $date->id;
-       $contact->name = $request->name;
-       $contact->email = $request->email;
-       $contact->address = $request->address;
-       $contact->phone = $request->phone;
-       $contact->country = 'default'; 
+            // Create Contact
 
-       if($contact->save() == false){
-            return response()->json('contact save error', 400);
-       }
+            $contact = new Contact();
+            $contact->date_id = $date->id;
+            $contact->name = $request->name;
+            $contact->email = $request->email;
+            $contact->address = $request->address;
+            $contact->phone = $request->phone;
+            $contact->country = 'default';
 
-       dump('contact saved');
+            if ($contact->save() == false) {
+                return response()->json('contact save error', 400);
+            }
 
-       $contact_id = $contact->id;
+            $contact_id = $contact->id;
 
-    //    dd('contact saved');
+            // dd('contact saved');
 
 
-       // Create reservation
-       $reservation = new Reservation();
-       $reservation->date_id = $date->id;
-       $reservation->tour_id = $date->tour_id;
-       $reservation->contact_id = $contact_id;
-       $reservation->pax = (int)$request->pax_count;
-       $reservation->price = $date->price;
+            // Create reservation
+            $reservation = new Reservation();
+            $reservation->date_id = $date->id;
+            $reservation->tour_id = $date->tour_id;
+            $reservation->contact_id = $contact_id;
+            $reservation->pax = (int)$request->pax_count;
+            $reservation->price = $date->price;
 
-       $total_price = (int)$request->pax_count * (int)$date->price;
+            $total_price = (int)$request->pax_count * (int)$date->price;
        
-       $reservation->total_price = $total_price;
-       $reservation->currency = $date->currency;
-       $reservation->payment_status = 0;
+            $reservation->total_price = $total_price;
+            $reservation->currency = $date->currency;
+            $reservation->payment_status = 0;
 
 
-       if($reservation->save() == false){
-            return response()->json('reservation save error', 400);
-       }
+            if ($reservation->save() == false) {
+                return response()->json('reservation save error', 400);
+            }
 
-       dump('res saved');
-       dump($reservation);
+            $reservation_id = $reservation->id;
 
-       $reservation_id = $reservation->id;
+            $pax->each(function ($item, $key) use ($date, $reservation_id) {
+                $newPax = new Pax();
+                $newPax->date_id = $date->id;
+                $newPax->reservation_id = $reservation_id;
+                $newPax->name = $item['name'];
+                $newPax->gender = $item['gender'];
+                $newPax->save();
+            });
 
+            return $reservation_id;
 
-        $pax->each(function ($item, $key) use ($date, $reservation_id) {
-            print_r($item);
-            $newPax = new Pax();
-            $newPax->date_id = $date->id;
-            $newPax->reservation_id = $reservation_id;
-            $newPax->name = $item['name'];
-            $newPax->gender = $item['gender'];
-            $newPax->save();
+        }); // TRANSACTION END
 
-        });
-
-
-    }); // TRANSACTION END
-
-       dump('reservation saved.');
-
-       dd($reservation);
-
-
-    //    dd($pax);
-       
-        
-        dd('ok devam!');
-        return $date;
-
-/*         $reservation = new Reservation();
-        $reservation->reservation_id = str_random(70);
-        $reservation->date_id = $date->id;
-        $reservation->tour_id = $date->tour_id; */
-
-
-        // dd($request->all());   
+        if(isset($reservation_id)) {
+            return redirect()->route('payment.show', [$reservation_id]);
+        }
     }
 
 
     protected function getDateWithId($id)
     {
-        return Date::findOrFail($id);   
+        return Date::findOrFail($id);
     }
 
     protected function createUser($name, $email, $address)
     {
-        $user = new User();   
+        $user = new User();
     }
 
     protected function getDateAvailable(Date $date) : int
@@ -194,9 +165,8 @@ class TourController extends Controller
         $reservated_pax_count = $date->contacts->count();
 
         //calculate available count
-        $available = $maximum - $reservated_pax_count;   
+        $available = $maximum - $reservated_pax_count;
 
         return $available;
     }
-
 }
