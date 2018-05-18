@@ -1,3 +1,15 @@
+body {
+    font-weight: 100;
+}
+
+h1  {
+    font-weight: 100;
+}
+
+h2 {
+    font-weight: 100;
+}
+
 .tour-list {
     list-style-type: none;
     padding: 0;
@@ -43,4 +55,10 @@
     font-size: 18px;
     font-weight: bold;
     max-width: 100%;
+}
+
+.make-payment-title {
+    padding:15px;
+    border-bottom:1px solid silver;
+    margin-bottom: 20px;
 }
