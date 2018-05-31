@@ -63,4 +63,14 @@ return [
     'start-date' => 'Start date',
     'finish-date' => 'End date',
 
+    /* payment */
+    'card-name' => 'Holder Full Name',
+    'card-no' => 'Card Number',
+    'card-expiration' => 'Expiretion Date',
+    'month' => 'Month',
+    'year' => 'Year',
+
+    'make-payment' => 'Make Payment',
+    'reservation-saved-success' => 'Reservation successfully saved.',
+
 ];
