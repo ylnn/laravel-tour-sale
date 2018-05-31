@@ -11,6 +11,8 @@ Route::group(['namespace' => 'Front'], function (){
     Route::get('reservation_step2/{date}/{adult}', 'TourController@reservationStep2')->name('reservation.step2.show');
 
     Route::post('reservation_post', 'TourController@reservationPost');
+    
+    Route::get('payment/{reservation}', 'PaymentController@show')->name('payment.show');
 });
 
 /* Login - Register */
