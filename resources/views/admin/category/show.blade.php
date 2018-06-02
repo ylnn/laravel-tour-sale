@@ -43,5 +43,6 @@
 
 <p>
     <a href="{{ route($baseRoute . '.index') }} " class="btn btn-primary btn-sm">@lang('adminLang.back')</a>
+    <a href="{{ route($baseRoute . '.edit', ['id' => $record->id]) }} " class="btn btn-warning btn-sm">@lang('adminLang.edit')</a>
 </p>
 @endsection
