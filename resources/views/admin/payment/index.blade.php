@@ -18,6 +18,7 @@
               <th>#</th>
              
               <th>Reservation ID</th>
+              <th>Amount</th>
               <th>@lang('adminLang.update')</th>
               <th width="200" class="text-right">@lang('adminLang.actions')</th>
 
@@ -29,6 +30,7 @@
                 <tr>
                   <td>{{$record->id}}</td>
                   <td>{{$record->res_id}}</td>
+                  <td>{{$record->amount}} {{$record->currency}}</td>
                   <td>{{$record->updated_at->format('d-m-Y H:i:s')}}</td>
                   <td class="text-right">
                     <a href="{{ route($baseRoute . '.show', [$record->id]) }} " class="btn btn-primary btn-sm">@lang('adminLang.show')</a>
