@@ -43,7 +43,7 @@
                         <label for="">@lang('frontLang.name-surname')</label>
                         <div class="row">
                             <div class="col-6">
-                                <input type="text" name="name" id="name" class="form-control" placeholder="" autofocus>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="" value="{{old('name')}}" autofocus>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <label for="">@lang('frontLang.phone')</label>
                         <div class="row">
                             <div class="col-6">
-                                <input type="text" name="phone" id="phone" class="form-control" placeholder="">
+                                <input type="text" name="phone" id="phone" class="form-control" placeholder="" value="{{old('phone')}}">
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         <label for="">@lang('frontLang.email')</label>
                         <div class="row">
                             <div class="col-6">
-                                <input type="text" name="email" id="email" class="form-control" placeholder="">
+                                <input type="text" name="email" id="email" class="form-control" placeholder="" value="{{old('email')}}">
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <label for="address">@lang('frontLang.address')</label>
                         <div class="row">
                             <div class="col-6">
-                                <textarea class="form-control" name="address" id="address" rows="3"></textarea>
+                                <textarea class="form-control" name="address" id="address" rows="3">{{old('address')}}</textarea>
                             </div>
                         </div>
                     </div>
