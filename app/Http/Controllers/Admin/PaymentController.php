@@ -22,10 +22,14 @@ class PaymentController extends Controller
 
     public function show(Payment $payment)
     {
-        
+        $record = $payment;
+        $baseRoute = $this->baseRoute;
+        return view('admin.payment.show', compact('record', 'baseRoute'));
     }
-    public function delete(Payment $payment)
+    public function destroy(Payment $payment)
     {
-        
+       $payment->delete(); 
+       showMessage(trans('adminLang.deleted'), 'success');
+       return back();
     }
 }
