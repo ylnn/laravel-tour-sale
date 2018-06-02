@@ -13,6 +13,7 @@ Route::group(['namespace' => 'Front'], function (){
     Route::post('reservation_post', 'TourController@reservationPost');
     
     Route::get('payment/{reservation}', 'PaymentController@show')->name('payment.show');
+    Route::post('make_payment/{reservation}', 'PaymentController@makePayment')->name('payment.make');
 });
 
 /* Login - Register */
