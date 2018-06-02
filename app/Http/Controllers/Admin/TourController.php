@@ -94,7 +94,7 @@ class TourController extends Controller
     public function destroy(Request $request, Tour $tour)
     {
         if ($tour->delete()) {
-            showMessage('Silindi', 'success');
+            showMessage(trans('adminLang.deleted'), 'success');
         }
 
         return back();
