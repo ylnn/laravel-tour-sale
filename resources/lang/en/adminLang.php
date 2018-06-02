@@ -61,6 +61,8 @@ return [
     'payment' => 'Payment',
     'payment_detail' => 'Payment Detail',
     'reservation_id' => 'Reservation ID',
+    'amount' => 'Amount',
+
 
 
     /* Vue Words */

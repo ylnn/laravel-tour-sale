@@ -17,8 +17,8 @@
             <tr>
               <th>#</th>
              
-              <th>Reservation ID</th>
-              <th>Amount</th>
+              <th>@lang('adminLang.reservation_id')</th>
+              <th>@lang('adminLang.amount')</th>
               <th>@lang('adminLang.update')</th>
               <th width="200" class="text-right">@lang('adminLang.actions')</th>
 
