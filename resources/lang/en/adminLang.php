@@ -56,6 +56,14 @@ return [
     'start-date' => 'Başlama Tarihi',
     'finish-date' => 'Bitiş Tarihi',
 
+
+    /* Reservation */
+    'reservations' => 'Reservations',
+    'reservation' => 'Reservation',
+    'reservation_detail' => 'Reservation Detail',
+    'tour_name' => 'Tour Name',
+    'contact_name' => 'Contact Name',
+
     /* Payments */
     'payments' => 'Payments',
     'payment' => 'Payment',
