@@ -31,7 +31,7 @@ class PaymentController extends Controller
             'cardNo' => 'required|integer|digits:16',
             'month' => 'required|integer|min:1|max:12',
             'year' => 'required|integer|min:2018|max:2099',
-            'cvc' => 'required|integer|digits:3'
+            'cvc' => 'required|string|digits:3'
         ]);
 
         $paymentInfo = new PaymentInfo(
