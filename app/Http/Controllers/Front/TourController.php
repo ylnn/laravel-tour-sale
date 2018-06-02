@@ -151,11 +151,6 @@ class TourController extends Controller
         return Date::findOrFail($id);
     }
 
-    protected function createUser($name, $email, $address)
-    {
-        $user = new User();
-    }
-
     protected function getDateAvailable(Date $date) : int
     {
         //maximum pax count
