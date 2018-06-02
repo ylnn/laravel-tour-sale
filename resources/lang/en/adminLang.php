@@ -25,6 +25,9 @@ return [
     'draft' => 'Taslak',
     'photos' => 'Fotoğraflar',
     'no-photos' => 'Fotoğraf Yok',
+    'back' => 'Geri',
+    'deleted' => 'Silindi.',
+    'saved' => 'Kaydedildi.',
 
     /* Category */
     'category' => 'Kategori',
@@ -53,6 +56,13 @@ return [
     'start-date' => 'Başlama Tarihi',
     'finish-date' => 'Bitiş Tarihi',
 
+    /* Payments */
+    'payments' => 'Payments',
+    'payment' => 'Payment',
+    'payment_detail' => 'Payment Detail',
+    'reservation_id' => 'Reservation ID',
+
+
     /* Vue Words */
     'upload' => 'Yükle',
     'refresh' => 'Yenile',
@@ -61,7 +71,6 @@ return [
     'uploading' => 'Yükleniyor...',
     'uploaded' => 'Yüklendi.',
     'error-occurred' => 'Hata oluştu.',
-    'deleted' => 'Silindi.',
 
 
 ];
