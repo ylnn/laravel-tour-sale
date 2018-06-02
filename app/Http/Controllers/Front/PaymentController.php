@@ -47,7 +47,8 @@ class PaymentController extends Controller
         $paymentResult = $this->startPaymentProcess($paymentInfo, $reservation);
 
         if($paymentResult['status'] === true) {
-            dd('payment OK!');
+            // PAYMENT OK
+            return view('front.payment.success', compact('reservation'));
         }
 
         return back()->withErrors([

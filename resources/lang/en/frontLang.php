@@ -72,5 +72,6 @@ return [
 
     'make-payment' => 'Make Payment',
     'reservation-saved-success' => 'Reservation successfully saved.',
+    'payment-success' => 'Demo payment successfully received.',
 
 ];

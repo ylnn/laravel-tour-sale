@@ -62,3 +62,8 @@ h2 {
     border-bottom:1px solid silver;
     margin-bottom: 20px;
 }
+
+.payment-success-back {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
