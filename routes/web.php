@@ -60,6 +60,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Mid
         Route::get('show/{payment}', 'PaymentController@show')->name('admin.payment.show');
         Route::get('delete/{payment}', 'PaymentController@destroy')->name('admin.payment.delete');
     });
+
+    Route::group(['prefix' => 'reservation'], function () {
+        Route::get('index', 'ReservationController@index')->name('admin.reservation.index');
+        Route::get('show/{reservation}', 'ReservationController@show')->name('admin.reservation.show');
+        Route::get('delete/{reservation}', 'ReservationController@destroy')->name('admin.reservation.delete');
+    });
     
     Route::get('get_photos_ajax/{tour}', 'TourController@getPhotos')->name('getPhotosAjax');
     Route::post('upload_photo_ajax', 'TourController@storePhoto')->name('uploadPhoto');
