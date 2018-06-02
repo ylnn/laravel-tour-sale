@@ -63,7 +63,7 @@ class TourController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $validator->errors();
+            return back()->withErrors(['error' => trans("frontLang.please-fill-form-correctly")]);
         }
 
         if ((int)$request->pax_count !== count($request->pax)) {

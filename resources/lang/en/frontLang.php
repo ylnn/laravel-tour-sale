@@ -56,6 +56,8 @@ return [
     'gender' => 'Gender',
     'complete-res' => 'Complete Reservation',
 
+    'please-fill-form-correctly' => 'Please fill fields correctly',
+
     /* Dates */
     'dates' => 'Dates',
     'date' => 'Date',
