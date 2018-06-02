@@ -56,7 +56,7 @@ class CategoryController extends Controller
         $record->setSlug($request->slug);
         $record->save();
 
-        showMessage('Kaydedildi', 'success');
+        showMessage(trans('adminLang.saved'), 'success');
 
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
     }
@@ -87,7 +87,7 @@ class CategoryController extends Controller
         $category->setSlug($request->slug);
         $category->save();
 
-        showMessage('Kaydedildi', 'success');
+        showMessage(trans('adminLang.saved'), 'success');
 
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
     }
@@ -95,7 +95,7 @@ class CategoryController extends Controller
     public function destroy(Request $request, Category $category)
     {
         if($category->delete()){
-            showMessage('Silindi', 'success');
+            showMessage(trans('adminLang.deleted'), 'success');
         }
 
         // return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);

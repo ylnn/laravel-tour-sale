@@ -52,7 +52,7 @@ class TourController extends Controller
         $record->setSlug($request->slug);
         $record->save();
 
-        showMessage('Kaydedildi', 'success');
+        showMessage(trans('adminLang.saved'), 'success');
 
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
     }
@@ -86,7 +86,7 @@ class TourController extends Controller
         $tour->setSlug($request->slug);
         $tour->save();
 
-        showMessage('Kaydedildi', 'success');
+        showMessage(trans('adminLang.saved'), 'success');
 
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute);
     }

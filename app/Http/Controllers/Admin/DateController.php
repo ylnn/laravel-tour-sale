@@ -57,7 +57,7 @@ class DateController extends Controller
 
         $date->save();
 
-        showMessage('Kaydedildi', 'success');
+        showMessage(trans('adminLang.saved'), 'success');
 
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute, [$tour->id]);
     }
@@ -84,7 +84,7 @@ class DateController extends Controller
 
         $date->save();
 
-        showMessage('Kaydedildi', 'success');
+        showMessage(trans('adminLang.saved'), 'success');
 
         return !empty(request('previous')) ? redirect(request('previous')) : redirect()->route($this->indexRoute, [$date->id]);
     }
@@ -99,7 +99,7 @@ class DateController extends Controller
     public function destroy(Request $request, Date $date)
     {
         if ($date->delete()) {
-            showMessage('Silindi', 'success');
+            showMessage(trans('adminLang.deleted'), 'success');
         }
 
         return back();
