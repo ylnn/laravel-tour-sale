@@ -16,7 +16,6 @@
           <thead>
             <tr>
               <th>#</th>
-             
               <th>@lang('adminLang.reservation_id')</th>
               <th>@lang('adminLang.amount')</th>
               <th>@lang('adminLang.update')</th>
@@ -29,7 +28,9 @@
               @foreach ($records as $record)
                 <tr>
                   <td>{{$record->id}}</td>
-                  <td>{{$record->res_id}}</td>
+                  <td>
+                    <a href="{{route('admin.reservation.show', [$record->res_id])}}">{{$record->res_id}}</a>
+                  </td>
                   <td>{{$record->amount}} {{$record->currency}}</td>
                   <td>{{$record->updated_at->format('d-m-Y H:i:s')}}</td>
                   <td class="text-right">
