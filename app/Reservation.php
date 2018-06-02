@@ -37,4 +37,8 @@ class Reservation extends Model
     {
         return $this->belongsTo('App\Date');
     }
+    public function payment()
+    {
+        return $this->hasOne('App\Payment', 'res_id');   
+    }
 }
