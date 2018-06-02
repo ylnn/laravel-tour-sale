@@ -21,6 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->string('card_holder');
             $table->string('card_no');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
