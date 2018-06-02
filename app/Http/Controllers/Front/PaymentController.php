@@ -46,7 +46,7 @@ class PaymentController extends Controller
 
         $paymentResult = $this->startPaymentProcess($paymentInfo, $reservation);
 
-        if($paymentResult === true) {
+        if($paymentResult['status'] === true) {
             dd('payment OK!');
         }
 
@@ -56,37 +56,40 @@ class PaymentController extends Controller
 
     }
 
-    protected function startPaymentProcess(PaymentInfo $paymentInfo, Reservation $reservation)
+    protected function startPaymentProcess(PaymentInfo $paymentInfo, Reservation $reservation) : array
     {
-        $process = $this->makeProcess($paymentInfo, $reservation);
-
-        $errorArray = [
+        // init response array
+        $responseArray = [
             'status' => false,
             'message' => 'Error'
         ];
 
+        $process = new PaymentProcess($paymentInfo, $reservation->id);
+        $process->MakeProcess();
+
+
         if($process->getStatus() == false){
             Log::alert('*** payment unsuccess >> resId : '. $reservation->id);
-            $errorArray['message'] = $process->getMessage();
-            return $errorArray;
+            $responseArray['message'] = $process->getMessage();
+            return $responseArray;
         }
 
         if(!$this->savePayment($reservation, $process)){
             Log::alert('*** payment ok but payment save error: ' . $reservation->id);
-            return false;
+            $responseArray['message'] = "payment save error.";
+            return $responseArray;
         }
         
         $reservation->payment_status = 1;
         $reservation->save();
 
-        return true;
-    }
 
-    protected function makeProcess(PaymentInfo $paymentInfo, Reservation $reservation) 
-    {
-        $process = new PaymentProcess($paymentInfo, $reservation->id);
-        $process->MakeProcess();
-        return $process;
+        //payment success
+        $responseArray['message'] = "payment success";
+        $responseArray['status'] = true;
+
+        return $responseArray;
+
     }
 
     protected function savePayment(Reservation $reservation, PaymentProcess $process)
