@@ -23,4 +23,18 @@ class Reservation extends Model
             $model->{$model->getKeyName()} = (string)Str::uuid();
         });
     }
+
+    public function contact()
+    {
+        return $this->belongsTo('App\Contact');
+    }
+
+    public function tour()
+    {
+        return $this->belongsTo('App\Tour');
+    }
+    public function date()
+    {
+        return $this->belongsTo('App\Date');
+    }
 }
