@@ -11,6 +11,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         $tours = $category->tours;
-        return view('front.category', compact('category', 'tours'));
+        $pageTitle = $category->name;
+        return view('front.category', compact('category', 'tours', 'pageTitle'));
     }
 }
