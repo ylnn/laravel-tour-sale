@@ -17,6 +17,15 @@
             </div>
             @endif
         </div>
+
+        <div>
+            <div class="alert alert-info">
+                <p> <b>Demo Credit Card:</p>
+                <p>No: 1234123412341234</p>
+                <p>Month: 01</p>
+                <p>Year: 2030</p>
+            </div>
+        </div>
         <br>
         <form class="bg-light p-3" method="POST" action="{{route('payment.make', [$reservation->id])}}">
             {{csrf_field()}}
