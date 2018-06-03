@@ -17,7 +17,7 @@
                         </h5>
                         <p>{!!$tour->summary!!}</p>
                         <p>
-                            <a name="" id="" class="btn btn-primary" href="{{$tourDetailLink}}" role="button">Tarihleri göster</a>
+                            <a name="" id="" class="btn btn-primary" href="{{$tourDetailLink}}" role="button">@lang('frontLang.show-dates')</a>
                         </p>
                     </div>
                 </div>

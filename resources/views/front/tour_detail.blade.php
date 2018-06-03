@@ -7,7 +7,7 @@
         <img src="holder.js/325x200"> @endif
         <p>{!!$tour->summary!!}</p>
 
-        <h4>Dates:</h4>
+        <h4>@lang('frontLang.dates')</h4>
         @isset($tour->dates)
         <table class="table">
             <thead>
@@ -24,7 +24,7 @@
                 <td>{{$date->price}} {{ $date->currency }}</td>
                 <td>{{$date->single_price}} {{ $date->currency }}</td>
                 <td>
-                    <a name="" id="" class="btn btn-info" href="{{route('reservation.show', [$date->id])}}" role="button">Rezervasyon Yap</a>
+                    <a class="btn btn-info" href="{{route('reservation.show', [$date->id])}}" role="button">@lang('frontLang.make-reservation')</a>
                 </td>
             </tr>
             @endforeach

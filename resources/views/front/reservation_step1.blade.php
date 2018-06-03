@@ -31,14 +31,20 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Please select participant count</div>
+                    <div class="card-header">@lang('frontLang.select-participants')</div>
                         <div class="card-body">
                             <div id="price">
+
+
                                 <price-component 
                                     date_id={{$date->id}} 
                                     price={{$date->price}} 
                                     currency={{$date->currency}}
                                     step2_url={{url('reservation_step2')}}
+                                    total_price_string=@lang('frontLang.total-price')
+                                    continue_string=@lang('frontLang.continue')
+                                    pax_count_string=@lang('frontLang.pax-count')
+                                    adult_string=@lang('frontLang.adult')
                                     >
                                 </price-component>
                             </div>
