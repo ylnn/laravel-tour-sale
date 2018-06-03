@@ -59,7 +59,7 @@ class TourController extends Controller
 
     public function show(Tour $tour)
     {
-        return view('admin.tour.show', compact('tour'));
+        return view('admin.tour.show', ['record' => $tour, 'baseRoute' => $this->baseRoute]);
     }
 
     public function edit(Tour $tour)
