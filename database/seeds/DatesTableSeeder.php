@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatesTableSeeder extends Seeder
 {
@@ -23,11 +24,11 @@ class DatesTableSeeder extends Seeder
                 'status' => 1,
                 'tour_id' => 1,
                 'user_id' => 1,
-                'start_date' => '2018-05-07 18:42:38',
-                'end_date' => '2018-05-17 18:42:38',
+                'start_date' => Carbon::now()->addDays(10),
+                'end_date' => Carbon::now()->addDays(13),
                 'min_pax' => 10,
                 'max_pax' => 20,
-                'price' => 1950,
+                'price' => 950,
                 'currency' => 'USD',
                 'created_at' => '2018-04-27 18:42:38',
                 'updated_at' => '2018-04-27 18:42:38',
@@ -39,8 +40,8 @@ class DatesTableSeeder extends Seeder
                 'status' => 1,
                 'tour_id' => 2,
                 'user_id' => 1,
-                'start_date' => '2018-05-15 00:00:00',
-                'end_date' => '2018-05-21 00:00:00',
+                'start_date' => Carbon::now()->addDays(10),
+                'end_date' => Carbon::now()->addDays(13),
                 'min_pax' => 3,
                 'max_pax' => 10,
                 'price' => 500,
@@ -55,8 +56,8 @@ class DatesTableSeeder extends Seeder
                 'status' => 1,
                 'tour_id' => 1,
                 'user_id' => 1,
-                'start_date' => '2018-05-17 00:00:00',
-                'end_date' => '2018-05-20 00:00:00',
+                'start_date' => Carbon::now()->addDays(20),
+                'end_date' => Carbon::now()->addDays(23),
                 'min_pax' => 5,
                 'max_pax' => 10,
                 'price' => 240,
@@ -71,8 +72,8 @@ class DatesTableSeeder extends Seeder
                 'status' => 1,
                 'tour_id' => 1,
                 'user_id' => 1,
-                'start_date' => '2018-05-28 00:00:00',
-                'end_date' => '2018-05-31 00:00:00',
+                'start_date' => Carbon::now()->addDays(30),
+                'end_date' => Carbon::now()->addDays(33),
                 'min_pax' => 10,
                 'max_pax' => 15,
                 'price' => 980,
