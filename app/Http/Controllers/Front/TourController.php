@@ -22,7 +22,7 @@ class TourController extends Controller
     {
         $show = 'tour';
         $pageTitle = $tour->name;
-        $dates = $tour->dates()->where('start_date', '>' ,Carbon::now())->get();
+        $dates = $tour->dates()->where('start_date', '>', Carbon::now())->get();
         return view('front.tour_detail', compact('tour', 'pageTitle', 'dates'));
     }
 
@@ -55,7 +55,7 @@ class TourController extends Controller
             return 'tour not found.';
         }
 
-         if ($this->checkDateIsPast($date)) {
+        if ($this->checkDateIsPast($date)) {
             return 'Date is invalid.';
         }
 
@@ -84,7 +84,7 @@ class TourController extends Controller
 
         $date = $this->getDateWithId($request->date_id);
         
-         if ($this->checkDateIsPast($date)) {
+        if ($this->checkDateIsPast($date)) {
             return 'Date is invalid.';
         }
         
@@ -147,7 +147,7 @@ class TourController extends Controller
 
     protected function checkDateIsPast(Date $date)
     {
-        if($date->start_date < Carbon::now()->addDay())   {
+        if ($date->start_date < Carbon::now()->addDay()) {
             return true;
         }
         return false;
@@ -164,10 +164,9 @@ class TourController extends Controller
             "pax.*.gender" => "string|required|in:mr,mrs,miss",
             "pax.*.name" => "string",
         ]);
-   
     }
 
-    protected function createNewContact(Request $request,Date $date)
+    protected function createNewContact(Request $request, Date $date)
     {
         $contact = new Contact();
         $contact->date_id = $date->id;
@@ -195,7 +194,6 @@ class TourController extends Controller
         $reservation->payment_status = 0;
 
         return $reservation;
-   
     }
 
     protected function savePaxes($pax, Date $date, $reservation_id)
