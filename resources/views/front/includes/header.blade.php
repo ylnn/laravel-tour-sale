@@ -46,7 +46,7 @@
                 @auth
                     <a class="p-3 text-muted" href="{{ route('admin.category.index') }}">Admin Panel</a>
                 @else
-                    <a class="p-3 text-muted" href="{{ route('auth.loginform') }}">Admin Login</a>
+                    <a class="p-3 text-muted" href="{{ route('login') }}">Admin Login</a>
                 @endif
             </nav>
         </div>

@@ -18,7 +18,7 @@
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('admin.dashboard') }}">TourSale with Laravel</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-            <form class="form-inline" method="POST" action="{{route('auth.logout')}}">
+            <form class="form-inline" method="POST" action="{{route('logout')}}">
                     {{ csrf_field() }}
                     {{-- <a class="nav-link" href="#">@lang('adminLang.logout')</a> --}}
                     <button type="submit" class="btn btn-secondary">@lang('adminLang.logout')</button>

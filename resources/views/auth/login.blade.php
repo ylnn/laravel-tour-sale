@@ -14,7 +14,7 @@
                     </div>
                 @endif
 
-                <form class="bg-light p-4" method="POST" action="{{route('auth.loginpost')}}">
+                <form class="bg-light p-4" method="POST" action="{{route('loginpost')}}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="email">E-mail</label>
