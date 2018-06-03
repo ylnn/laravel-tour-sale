@@ -14,6 +14,7 @@ use App\Reservation;
 use App\User;
 use App\Pax;
 use App\Contact;
+use Carbon\Carbon;
 
 class TourController extends Controller
 {
@@ -21,14 +22,19 @@ class TourController extends Controller
     {
         $show = 'tour';
         $pageTitle = $tour->name;
-        return view('front.tour_detail', compact('tour', 'pageTitle'));
+        $dates = $tour->dates()->where('start_date', '>' ,Carbon::now())->get();
+        return view('front.tour_detail', compact('tour', 'pageTitle', 'dates'));
     }
 
     public function reservationStep1(Date $date)
     {
         $tour = $date->tour;
         if ((!$tour) or ($tour->status !== 1)) {
-            return 'tour not found.';
+            return 'Tour invalid.';
+        }
+
+        if ($this->checkDateIsPast($date)) {
+            return 'Date is invalid.';
         }
 
         $pageTitle = trans('frontLang.reservation'). ": $tour->name";
@@ -48,6 +54,11 @@ class TourController extends Controller
         if ((!$tour) or ($tour->status !== 1)) {
             return 'tour not found.';
         }
+
+         if ($this->checkDateIsPast($date)) {
+            return 'Date is invalid.';
+        }
+
 
         $total_price = (int)$date->price * (int)$adult;
         $currency = $date->currency;
@@ -81,7 +92,9 @@ class TourController extends Controller
 
         $date = $this->getDateWithId($request->date_id);
         
-        // dd($date);
+         if ($this->checkDateIsPast($date)) {
+            return 'Date is invalid.';
+        }
         
         $available = $this->getDateAvailable($date);
  
@@ -170,5 +183,13 @@ class TourController extends Controller
         $available = $maximum - $reservated_pax_count;
 
         return $available;
+    }
+
+    protected function checkDateIsPast(Date $date)
+    {
+        if($date->start_date < Carbon::now()->addDay())   {
+            return true;
+        }
+        return false;
     }
 }
