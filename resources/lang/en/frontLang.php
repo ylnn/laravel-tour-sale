@@ -23,6 +23,8 @@ return [
     'search' => 'Search',
     'can-empty' => 'Can be empty',
     'reservation' => 'Reservation',
+    'make-reservation' => 'Make reservation',
+    'show-dates' => 'Show Dates',
 
 
     /* Category */
@@ -47,7 +49,9 @@ return [
     'currency' => 'Currency',
     'per-pax' => 'Per Pax',
     'pax' => 'Pax',
+    'pax-count' => 'Pax Count',
     'continue' => 'Continue',
+    'adult' => 'Adult',
     'contact-information' => 'Contact Information',
     'name-surname' => 'Full name',
     'phone' => 'Phone',
@@ -56,6 +60,7 @@ return [
     'pax-information' => 'Pax Information',
     'gender' => 'Gender',
     'complete-res' => 'Complete Reservation',
+    'select-participants'=>'Please select participant count',
 
     'please-fill-form-correctly' => 'Please fill fields correctly',
 
