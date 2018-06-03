@@ -8,10 +8,16 @@
             @foreach ($tours as $tour) @php $tourDetailLink = route('tour', [$tour->id]) @endphp
             <li class="border">
                 <div class="row">
-                    <div class="col-3">
-                        <img src="holder.js/170x120">
+                    <div class="col-4">
+                        @if(isset($tour->photos[0]))
+                        <a href="{{$tourDetailLink}}">
+                            <img width="200" src="{{ asset('storage/' . $tour->photos[0]->filename_thumb ) }}"> 
+                        </a>
+                        @else
+                            <img src="holder.js/170x200"> 
+                        @endif
                     </div>
-                    <div class="col">
+                    <div class="col-8">
                         <h5>
                             <a href="{{$tourDetailLink}}">{{$tour->name}}</a>
                         </h5>
