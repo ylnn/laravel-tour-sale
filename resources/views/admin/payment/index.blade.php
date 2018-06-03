@@ -29,7 +29,7 @@
                 <tr>
                   <td>{{$record->id}}</td>
                   <td>
-                    <a href="{{route('admin.reservation.show', [$record->res_id])}}">{{$record->res_id}}</a>
+                    <a href="{{route('admin.reservation.selectpax', [$record->res_id])}}">{{$record->res_id}}</a>
                   </td>
                   <td>{{$record->amount}} {{$record->currency}}</td>
                   <td>{{$record->updated_at->format('d-m-Y H:i:s')}}</td>

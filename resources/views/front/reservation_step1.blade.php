@@ -40,7 +40,7 @@
                                     date_id={{$date->id}} 
                                     price={{$date->price}} 
                                     currency={{$date->currency}}
-                                    step2_url={{url('reservation_step2')}}
+                                    step2_url={{url('reservation2')}}
                                     total_price_string=@lang('frontLang.total-price')
                                     continue_string=@lang('frontLang.continue')
                                     pax_count_string=@lang('frontLang.pax-count')
