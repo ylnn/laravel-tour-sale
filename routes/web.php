@@ -7,10 +7,10 @@ Route::group(['namespace' => 'Front'], function (){
     Route::get('category/{category}', 'CategoryController@show')->name('category');
     Route::get('tour_detail/{tour}', 'TourController@show')->name('tour');
     
-    Route::get('reservation_step1/{date}', 'TourController@reservationStep1')->name('reservation.show');
-    Route::get('reservation_step2/{date}/{adult}', 'TourController@reservationStep2')->name('reservation.step2.show');
+    Route::get('reservation1/{date}', 'ReservationController@select')->name('reservation.selectpax');
+    Route::get('reservation2/{date}/{adult}', 'ReservationController@contact')->name('reservation.contact');
 
-    Route::post('reservation_post', 'TourController@reservationPost');
+    Route::post('reservation_post', 'ReservationController@post');
     
     Route::get('payment/{reservation}', 'PaymentController@show')->name('payment.show');
     Route::post('make_payment/{reservation}', 'PaymentController@makePayment')->name('payment.make');
