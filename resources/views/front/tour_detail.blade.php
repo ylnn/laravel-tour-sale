@@ -8,7 +8,7 @@
         <p>{!!$tour->summary!!}</p>
 
         <h4>@lang('frontLang.dates')</h4>
-        @isset($tour->dates)
+        @isset($dates)
         <table class="table">
             <thead>
                 <th>@lang('frontLang.start-date')</th>
@@ -17,7 +17,7 @@
                 <th>@lang('frontLang.single-price')</th>
                 <th>@lang('frontLang.actions')</th>
             </thead>
-            @foreach($tour->dates as $date)
+            @foreach($dates as $date)
             <tr>
                 <td>{{$date->start_date->format('d/m/Y')}}</td>
                 <td>{{$date->end_date->format('d/m/Y')}}</td>
