@@ -70,15 +70,7 @@ class TourController extends Controller
 
     public function reservationPost(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            "name" => "string|required",
-            "email" => "required|email",
-            "phone" => "string|required",
-            "address" => "string|required",
-            "pax_count" => "integer|required",
-            "pax.*.gender" => "string|required|in:mr,mrs,miss",
-            "pax.*.name" => "string",
-        ]);
+        $validator = $this->validator($request);
 
         if ($validator->fails()) {
             return back()
@@ -102,45 +94,19 @@ class TourController extends Controller
             return response()->json('not available', 400);
         }
 
-        
-        
         //TRANSACTION START
         $reservation_id = DB::transaction(function () use ($date, $request) {
             $pax = collect($request->pax);
 
             // Create Contact
-
-            $contact = new Contact();
-            $contact->date_id = $date->id;
-            $contact->name = $request->name;
-            $contact->email = $request->email;
-            $contact->address = $request->address;
-            $contact->phone = $request->phone;
-            $contact->country = 'default';
+            $contact = $this->createNewContact($request, $date);
 
             if ($contact->save() == false) {
                 return response()->json('contact save error', 400);
             }
 
-            $contact_id = $contact->id;
-
-            // dd('contact saved');
-
-
             // Create reservation
-            $reservation = new Reservation();
-            $reservation->date_id = $date->id;
-            $reservation->tour_id = $date->tour_id;
-            $reservation->contact_id = $contact_id;
-            $reservation->pax = (int)$request->pax_count;
-            $reservation->price = $date->price;
-
-            $total_price = (int)$request->pax_count * (int)$date->price;
-       
-            $reservation->total_price = $total_price;
-            $reservation->currency = $date->currency;
-            $reservation->payment_status = 0;
-
+            $reservation = $this->createNewReservation($request, $date, $contact);
 
             if ($reservation->save() == false) {
                 return response()->json('reservation save error', 400);
@@ -148,14 +114,8 @@ class TourController extends Controller
 
             $reservation_id = $reservation->id;
 
-            $pax->each(function ($item, $key) use ($date, $reservation_id) {
-                $newPax = new Pax();
-                $newPax->date_id = $date->id;
-                $newPax->reservation_id = $reservation_id;
-                $newPax->name = $item['name'];
-                $newPax->gender = $item['gender'];
-                $newPax->save();
-            });
+            // Create Paxes
+            $this->savePaxes($pax, $date, $reservation_id);
 
             return $reservation_id;
         }); // TRANSACTION END
@@ -191,5 +151,62 @@ class TourController extends Controller
             return true;
         }
         return false;
+    }
+
+    protected function validator($request)
+    {
+        return Validator::make($request->all(), [
+            "name" => "string|required",
+            "email" => "required|email",
+            "phone" => "string|required",
+            "address" => "string|required",
+            "pax_count" => "integer|required",
+            "pax.*.gender" => "string|required|in:mr,mrs,miss",
+            "pax.*.name" => "string",
+        ]);
+   
+    }
+
+    protected function createNewContact(Request $request,Date $date)
+    {
+        $contact = new Contact();
+        $contact->date_id = $date->id;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->address = $request->address;
+        $contact->phone = $request->phone;
+        $contact->country = 'default';
+        return $contact;
+    }
+
+    protected function createNewReservation(Request $request, Date $date, Contact $contact)
+    {
+        $reservation = new Reservation();
+        $reservation->date_id = $date->id;
+        $reservation->tour_id = $date->tour_id;
+        $reservation->contact_id = $contact->id;
+        $reservation->pax = (int)$request->pax_count;
+        $reservation->price = $date->price;
+
+        $total_price = (int)$request->pax_count * (int)$date->price;
+    
+        $reservation->total_price = $total_price;
+        $reservation->currency = $date->currency;
+        $reservation->payment_status = 0;
+
+        return $reservation;
+   
+    }
+
+    protected function savePaxes($pax, Date $date, $reservation_id)
+    {
+        $pax->each(function ($item, $key) use ($date, $reservation_id) {
+            $newPax = new Pax();
+            $newPax->date_id = $date->id;
+            $newPax->reservation_id = $reservation_id;
+            $newPax->name = $item['name'];
+            $newPax->gender = $item['gender'];
+            $newPax->save();
+        });
     }
 }
