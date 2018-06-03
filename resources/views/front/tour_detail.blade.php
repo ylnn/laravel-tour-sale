@@ -24,7 +24,7 @@
                 <td>{{$date->price}} {{ $date->currency }}</td>
                 <td>{{$date->single_price}} {{ $date->currency }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{route('reservation.show', [$date->id])}}" role="button">@lang('frontLang.make-reservation')</a>
+                    <a class="btn btn-info" href="{{route('reservation.selectpax', [$date->id])}}" role="button">@lang('frontLang.make-reservation')</a>
                 </td>
             </tr>
             @endforeach
