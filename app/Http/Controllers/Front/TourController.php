@@ -20,7 +20,8 @@ class TourController extends Controller
     public function show(Tour $tour)
     {
         $show = 'tour';
-        return view('front.tour_detail', compact('tour'));
+        $pageTitle = $tour->name;
+        return view('front.tour_detail', compact('tour', 'pageTitle'));
     }
 
     public function reservationStep1(Date $date)
@@ -29,7 +30,10 @@ class TourController extends Controller
         if ((!$tour) or ($tour->status !== 1)) {
             return 'tour not found.';
         }
-        return view('front.reservation_step1', compact('tour', 'date'));
+
+        $pageTitle = trans('frontLang.reservation'). ": $tour->name";
+
+        return view('front.reservation_step1', compact('tour', 'date', 'pageTitle'));
     }
 
     public function reservationStep2(Request $request, Date $date, $adult)
@@ -40,14 +44,17 @@ class TourController extends Controller
         }
 
         $tour = $date->tour;
+
         if ((!$tour) or ($tour->status !== 1)) {
             return 'tour not found.';
         }
 
         $total_price = (int)$date->price * (int)$adult;
         $currency = $date->currency;
+
+        $pageTitle = trans('frontLang.reservation') . ": $tour->name";
         
-        return view('front.reservation_step2', compact('tour', 'date', 'adult', 'total_price', 'currency'));
+        return view('front.reservation_step2', compact('tour', 'date', 'adult', 'total_price', 'currency', 'pageTitle'));
     }
 
     public function reservationPost(Request $request)
@@ -86,7 +93,6 @@ class TourController extends Controller
         
         //TRANSACTION START
         $reservation_id = DB::transaction(function () use ($date, $request) {
-            
             $pax = collect($request->pax);
 
             // Create Contact
@@ -139,10 +145,9 @@ class TourController extends Controller
             });
 
             return $reservation_id;
-
         }); // TRANSACTION END
 
-        if(isset($reservation_id)) {
+        if (isset($reservation_id)) {
             return redirect()->route('payment.show', [$reservation_id]);
         }
     }
