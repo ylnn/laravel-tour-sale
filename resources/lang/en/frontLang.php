@@ -22,6 +22,7 @@ return [
     'create' => 'Create',
     'search' => 'Search',
     'can-empty' => 'Can be empty',
+    'reservation' => 'Reservation',
 
 
     /* Category */
