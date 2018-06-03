@@ -12,7 +12,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <button type="submit" class="btn btn-default">
-                            <i class="fa fa-upload"></i> {{lang.upload}}</button>
+                            {{lang.upload}}</button>
                     </div>
                 </div>
             </div>
@@ -148,12 +148,13 @@
                     })
                     .then(function (response) {
                         console.log('delete success...');
-                        this.setMessage('Silindi.')
+                        this.setMessage(this.lang.deleted);
 
                         this.getir();
                     }.bind(this))
                     .catch(function (error) {
-                        this.setMessage('Silinirken hata oluştu...')
+                        // this.setMessage('Silinirken hata oluştu...')
+                        this.setMessage(this.lang.error-occurred);
                         console.log('delete hata');
                     });
             },

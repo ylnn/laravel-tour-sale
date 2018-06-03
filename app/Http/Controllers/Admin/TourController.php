@@ -155,15 +155,15 @@ class TourController extends Controller
     public function getLangForVue(Request $request)
     {
         $vueLang = [
-            'upload' => trans('admin.upload'),
-            'refresh' => trans('admin.refresh'),
-            'sil' => trans('admin.delete'),
-            'select-photo' => trans('admin.select-photo'),
-            'once-select-photo' => trans('admin.once-select-photo'),
-            'uploading' => trans('admin.uploading'),
-            'uploaded' => trans('admin.uploaded'),
-            'error-occurred' => trans('admin.error-occurred'),
-            'deleted' => trans('admin.deleted'),
+            'upload' => trans('adminLang.upload'),
+            'refresh' => trans('adminLang.refresh'),
+            'sil' => trans('adminLang.delete'),
+            'select-photo' => trans('adminLang.select-photo'),
+            'once-select-photo' => trans('adminLang.once-select-photo'),
+            'uploading' => trans('adminLang.uploading'),
+            'uploaded' => trans('adminLang.uploaded'),
+            'error-occurred' => trans('adminLang.error-occurred'),
+            'deleted' => trans('adminLang.deleted'),
         ];
 
         return response()->json($vueLang, 200);

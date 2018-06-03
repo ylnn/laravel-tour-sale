@@ -28,6 +28,11 @@ return [
     'back' => 'Back',
     'deleted' => 'Deleted',
     'saved' => 'Saved',
+    'logout' => 'Logout',
+    'dashboard' => 'Dashboard',
+    'admin-panel' => 'Admin Panel',
+    'show-website' => 'Show Website',
+
 
     /* Category */
     'category' => 'Category',
@@ -48,6 +53,7 @@ return [
     'price' => 'Price',
     'single-price' => 'Single Price',
     'currency' => 'Currency',
+    'refresh' => 'Refresh',
 
     /* Dates */
     'dates' => 'Dates',

@@ -13289,11 +13289,12 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[na
                 'id': photoid // photo id for deleting
             }).then(function (response) {
                 console.log('delete success...');
-                this.setMessage('Silindi.');
+                this.setMessage(this.lang.deleted);
 
                 this.getir();
             }.bind(this)).catch(function (error) {
-                this.setMessage('Silinirken hata oluştu...');
+                // this.setMessage('Silinirken hata oluştu...')
+                this.setMessage(this.lang.error - occurred);
                 console.log('delete hata');
             });
         },
@@ -15339,10 +15340,7 @@ var render = function() {
               _c(
                 "button",
                 { staticClass: "btn btn-default", attrs: { type: "submit" } },
-                [
-                  _c("i", { staticClass: "fa fa-upload" }),
-                  _vm._v(" " + _vm._s(_vm.lang.upload))
-                ]
+                [_vm._v("\n                        " + _vm._s(_vm.lang.upload))]
               )
             ])
           ])
