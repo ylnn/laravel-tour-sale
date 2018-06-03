@@ -23,8 +23,11 @@
                 </div>
                 <div class="col-4 text-center">
                     <a href="{{route('home')}}">
-                        <h1>TourSale With Laravel</h1>
+                        <h1>TourSale Software</h1>
                     </a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    
                 </div>
             </div>
         </header>
