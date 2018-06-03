@@ -17,8 +17,10 @@ Route::group(['namespace' => 'Front'], function (){
 });
 
 /* Login - Register */
-Route::get('loginform', function () {})->name('auth.loginform');
-Route::get('register', function () {})->name('auth.register');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('auth.loginform');
+Route::post('do_login', 'Auth\LoginController@login')->name('auth.loginpost');
+Route::post('logout', 'Auth\LoginController@logout')->name('auth.logout');
+// Route::get('register', function () {})->name('auth.register');
 
 /* Admin Side */
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () { /* Middleware: admin eklenecek */
