@@ -14,35 +14,27 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-/*         factory(Category::class, 10)
-            ->create()
-            ->each(function($c){
-                for ($i=0; $i < 10; $i++) { 
-                    $c->tours()->save(factory(Tour::class)->make());
-                }
-            }); */
-            
          DB::table('categories')->insert([
             'status' => 1,
-            'name' => 'Kültür Turları',
-            'slug' => 'kultur-turlari',
-            'description' => 'Muhteşem kültürleri bizimle keşfedin!',
+            'name' => 'Cultural Tours',
+            'slug' => 'cultural-tours',
+            'description' => 'Discover great cultures with us!',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
          DB::table('categories')->insert([
             'status' => 1,
-            'name' => 'Yurtdışı Turları',
-            'slug' => 'yurtdisi-turlari',
-            'description' => 'Yurtdışına bizimle açılın!',
+            'name' => 'Abroad Tours',
+            'slug' => 'abroad-tours',
+            'description' => 'Open abroad with us!',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
          DB::table('categories')->insert([
             'status' => 1,
-            'name' => 'Karadeniz Turları',
-            'slug' => 'karadeniz-turlari',
-            'description' => 'Karadeniz yeşilliklerinin keyfini bizimle çıkarın.',
+            'name' => 'Blacksea Tours',
+            'slug' => 'blacksea-tours',
+            'description' => 'Take advantage of the greenery of the Black Sea with us',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
