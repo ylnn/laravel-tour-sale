@@ -16,8 +16,11 @@ class PaymentController extends Controller
     {
         if($reservation->payment_status > 0) {
             return "Payment already received.";
-        } 
-        return view('front.payment.show', compact('reservation'));
+        }
+
+        $pageTitle = trans('frontLang.make-payment');
+
+        return view('front.payment.show', compact('reservation','pageTitle'));
     }
 
     public function makePayment(Request $request, Reservation $reservation)
@@ -48,7 +51,8 @@ class PaymentController extends Controller
 
         if($paymentResult['status'] === true) {
             // PAYMENT OK
-            return view('front.payment.success', compact('reservation'));
+            $pageTitle = trans('frontLang.payment-success');
+            return view('front.payment.success', compact('reservation','pageTitle'));
         }
 
         return back()->withErrors([
