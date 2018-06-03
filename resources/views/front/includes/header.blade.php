@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>TourSale Front</title>
+    @isset($pageTitle)
+        <title>{{$pageTitle}}</title>
+    @else
+        <title>TourSale Software with Laravel</title>
+    @endif
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" >
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/theme.css')}}" rel="stylesheet">
