@@ -43,6 +43,11 @@
                         <a class="p-3 text-muted" href="{{ route('category', [$category->id]) }}">{{$category->name}}</a>
                     @endforeach
                 @endif
+                @auth
+                    <a class="p-3 text-muted" href="{{ route('admin.category.index') }}">Admin Panel</a>
+                @else
+                    <a class="p-3 text-muted" href="{{ route('auth.loginform') }}">Admin Login</a>
+                @endif
             </nav>
         </div>
 
