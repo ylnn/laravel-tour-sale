@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\ReservationRepository;
 use App\Http\Requests\ReservationPostRequest;
+use App\Date;
 
 class ReservationController extends Controller
 {
