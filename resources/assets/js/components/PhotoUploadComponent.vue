@@ -75,13 +75,16 @@
         },
         methods: {
             getPhotos: function () {
-                axios.get(this.url + this.get_photos_url + this.id)
+
+                self = this;
+                console.log('get photos running...');
+                axios.get(self.url + self.get_photos_url + self.id)
                     .then(function (response) {
-                        if(Array.isArray(response.data)){
-                            console.log('get success...');
-                            this.photos = response.data;
+                        self.photos = response.data;
+                        if(!Array.isArray(response.data)){
+                            self.photos = [];
                         }
-                    }.bind(this))
+                    })
                     .catch(function (error) {
                         console.log('get error...');
                     });
@@ -92,16 +95,10 @@
 
                 let length = this.uploadPhotos.length;
 
-                console.log('Length: ' + length);
-
                 if (length == 0) {
-
                     this.setMessage(this.lang['once-select-photo'])
-
                 } else {
-
                     this.setMessage(this.lang['uploading'])
-
                 }
 
                 for (var photo of this.uploadPhotos) {
@@ -149,20 +146,16 @@
                     .then(function (response) {
                         console.log('delete success...');
                         this.setMessage(this.lang.deleted);
-
                         this.getir();
                     }.bind(this))
                     .catch(function (error) {
-                        // this.setMessage('Silinirken hata oluştu...')
                         this.setMessage(this.lang.error-occurred);
-                        console.log('delete hata');
                     });
             },
 
             getLang: function () {
                 axios.get(this.url + this.get_lang_variables_url)
                     .then(function (response) {
-                        console.log('get lang success...');
                         this.lang = response.data;
                     }.bind(this))
                     .catch(function (error) {
@@ -177,12 +170,8 @@
             },
 
             setMessage(message) {
-
                 this.message = message;
-
             }
-
-
         },
 
         mounted() {
