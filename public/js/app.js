@@ -13208,12 +13208,15 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[na
 
     methods: {
         getPhotos: function getPhotos() {
-            axios.get(this.url + this.get_photos_url + this.id).then(function (response) {
-                if (Array.isArray(response.data)) {
-                    console.log('get success...');
-                    this.photos = response.data;
+
+            self = this;
+            console.log('get photos running...');
+            axios.get(self.url + self.get_photos_url + self.id).then(function (response) {
+                self.photos = response.data;
+                if (!Array.isArray(response.data)) {
+                    self.photos = [];
                 }
-            }.bind(this)).catch(function (error) {
+            }).catch(function (error) {
                 console.log('get error...');
             });
         },
@@ -13222,13 +13225,9 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[na
 
             var length = this.uploadPhotos.length;
 
-            console.log('Length: ' + length);
-
             if (length == 0) {
-
                 this.setMessage(this.lang['once-select-photo']);
             } else {
-
                 this.setMessage(this.lang['uploading']);
             }
 
@@ -13290,18 +13289,14 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[na
             }).then(function (response) {
                 console.log('delete success...');
                 this.setMessage(this.lang.deleted);
-
                 this.getir();
             }.bind(this)).catch(function (error) {
-                // this.setMessage('Silinirken hata oluştu...')
                 this.setMessage(this.lang.error - occurred);
-                console.log('delete hata');
             });
         },
 
         getLang: function getLang() {
             axios.get(this.url + this.get_lang_variables_url).then(function (response) {
-                console.log('get lang success...');
                 this.lang = response.data;
             }.bind(this)).catch(function (error) {
                 console.log('get lang error...');
@@ -13314,7 +13309,6 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('input[na
             if (files.length) this.uploadPhotos = files;
         },
         setMessage: function setMessage(message) {
-
             this.message = message;
         }
     },
