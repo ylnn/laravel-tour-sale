@@ -16,6 +16,7 @@
     <script src="{{asset('js/holder.min.js')}}"></script>
     <script src="{{asset('js/lightslider.min.js')}}"></script>
     <script src="{{asset('css/summernote/summernote-bs4.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/slick.min.js')}}"></script>
     {{--  <script src="{{asset('css/summernote/summernote.css')}}"></script>  --}}
     @stack('footer_js')
     <script >
@@ -24,6 +25,16 @@
         fg: '#eceeef',
         text: 'Thumbnail'
       });
+
+      $(document).ready(function(){
+        $('.tourPhotos').slick({
+            autoplay: true,
+            autoplaySpeed: 2000,        
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        });
+});
     </script>
     
 </body>

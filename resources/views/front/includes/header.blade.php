@@ -16,6 +16,8 @@
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/lightslider.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/summernote/summernote-bs4.css')}}" rel="stylesheet">
+    <link href="{{asset('css/slick/slick.css')}}" rel="stylesheet">
+    <link href="{{asset('css/slick/slick-theme.css')}}" rel="stylesheet">
     @stack('header_js')
 </head>
 <body>
