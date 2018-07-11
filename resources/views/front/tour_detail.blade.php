@@ -1,11 +1,7 @@
 @extends('layout.front') @section('content')
 <div class="row justify-content-center">
     <div class="col-8">
-        <h2>{{$tour->name}}</h2>
-        @if(isset($tour->photos[0]))
-        <img src="{{ asset('storage/' . $tour->photos[0]->filename ) }}"> @else
-        <img src="holder.js/325x200"> @endif
-        <p>{!!$tour->summary!!}</p>
+        @include('front.includes.tour_info')
 
         <h4>@lang('frontLang.dates')</h4>
         @isset($dates)
