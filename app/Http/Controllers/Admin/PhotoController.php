@@ -12,7 +12,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PhotoController extends Controller
 {
-    public $photoSizes = ['width' => 700, 'height' => 500]; // width, height
+    public $photoSizes = ['width' => 1000, 'height' => 500]; // width, height
     public $thumbSizes = ['width' => 325, 'height' => 200]; // width, height
 
     protected $mainFolder = 'public/';
@@ -57,7 +57,7 @@ class PhotoController extends Controller
         return Validator::make($request->all(), [
             'photo' => [
                 'required',
-                Rule::dimensions()->maxWidth(3000)->maxHeight(2000),
+                Rule::dimensions()->maxWidth(3000)->maxHeight(2000)->minWidth(1000)->minHeight(500),
             ],
         ]);
     }
