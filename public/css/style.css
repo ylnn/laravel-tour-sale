@@ -71,6 +71,10 @@ h2 {
     max-width: 100%;
 }
 
+.tour-info h2 {
+    margin-bottom: 40px;
+}
+
 .make-payment-title {
     padding:15px;
     border-bottom:1px solid silver;

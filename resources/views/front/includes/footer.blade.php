@@ -27,14 +27,21 @@
       });
 
       $(document).ready(function(){
-        $('.tourPhotos').slick({
-            autoplay: true,
-            autoplaySpeed: 2000,        
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1
+            // $('.tourPhotos').slick({
+            //     autoplay: true,
+            //     autoplaySpeed: 2000,        
+            //     infinite: true,
+            //     slidesToShow: 1,
+            //     slidesToScroll: 1
+            // });
+
+            $("#lightSlider").lightSlider({
+                item: 1,
+                auto: true,
+                loop: true,
+                pause: 2000,
+            }); 
         });
-});
     </script>
     
 </body>
