@@ -8,7 +8,7 @@
     @isset($pageTitle)
         <title>{{$pageTitle}}</title>
     @else
-        <title>TourSale Software with Laravel</title>
+        <title>Toursale with Laravel</title>
     @endif
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" >
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
