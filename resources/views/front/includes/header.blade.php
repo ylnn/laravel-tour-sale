@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-4 text-center">
                     <a href="{{route('home')}}">
-                        <h1>TourSale Software</h1>
+                        <h1 class="header-title">Toursale</h1>
                     </a>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
@@ -38,21 +38,27 @@
             </div>
         </header>
 
-        <div class="nav-scroller py-1 mb-5" style="">
-            <nav class="nav d-flex ">
-                @isset($categories)
-                    @foreach ($categories as $category)
-                        <a class="p-3 text-muted" href="{{ route('category', [$category->id]) }}">{{$category->name}}</a>
-                    @endforeach
-                @endif
-                @auth
-                    <a class="p-3 text-muted" href="{{ route('admin.category.index') }}">Admin Panel</a>
-                @else
-                    <a class="p-3 text-muted" href="{{ route('login') }}">Admin Login</a>
-                @endif
-            </nav>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="nav-scroller py-1 mb-5" style="">
+                    <nav class="nav d-flex">
+                        @isset($categories)
+                            @foreach ($categories as $category)
+                                <a class="p-3 text-muted" href="{{ route('category', [$category->id]) }}">{{$category->name}}</a>
+                            @endforeach
+                        @endif
+                        @auth
+                            <a class="p-3 text-muted" href="{{ route('admin.category.index') }}">Admin Panel</a>
+                        @else
+                            <a class="p-3 text-muted" href="{{ route('login') }}">Admin Login</a>
+                        @endif
+                    </nav>
+                </div>
+   
+            </div>
         </div>
-
+        </div>
 
 
      

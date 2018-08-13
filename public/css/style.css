@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans|Playfair+Display');
+
+
 body {
     font-weight: 100;
+
+    font-family: 'Noto Sans', serif;
+
 }
 
 h1  {
@@ -8,6 +14,11 @@ h1  {
 
 h2 {
     font-weight: 100;
+}
+
+.header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
 }
 
 .tour-list {
@@ -19,17 +30,6 @@ h2 {
     border: 1px solid silver;
     padding: 20px;
     margin-bottom: 10px;
-}
-
-.homepage_tour_div {
-
-    border: 1px solid rgb(230, 230, 230);
-    padding: 20px;
-    /* margin-bottom: 10px; */
-    width: 370px;
-    height: 280px;
-    margin-left: -1px;
-    margin-top: -1px;
 }
 
 .popularTours {
@@ -44,6 +44,20 @@ h2 {
 
 .popularTours li {
     float: left;
+}
+
+
+.img-box {
+    position: relative;
+    text-align: left;
+    color: white;
+}
+
+.title-on-image {
+    position: absolute;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;   
 }
 
 .res-form-header {
